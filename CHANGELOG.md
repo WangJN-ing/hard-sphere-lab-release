@@ -1,5 +1,11 @@
 # Changelog
 
+## 4.1.7
+
+- Publishes the first acceptance release from the public release repository.
+- Adds Help > User Guide in the desktop app, opening the language-appropriate public README for download, update, experiment workflow, and FAQ instructions.
+- Keeps the public repository limited to release documentation and update assets; application source code remains excluded.
+
 ## 4.1.6
 
 - Migrates the desktop auto-update channel so future update assets and release notes are published from the new public release repository.
