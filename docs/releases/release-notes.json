@@ -3,6 +3,2124 @@
   "app": "hard-sphere-lab",
   "releases": [
     {
+      "version": "5.1.2",
+      "date": "2026-07-18",
+      "channel": "stable",
+      "download": {
+        "releasePage": "https://github.com/WangJN-ing/hard-sphere-lab-release/releases/tag/v5.1.2",
+        "windowsInstaller": "https://github.com/WangJN-ing/hard-sphere-lab-release/releases/download/v5.1.2/heat-capacity-lab-setup-5.1.2.exe"
+      },
+      "summary": {
+        "zh-CN": "5.1.2 是基于 5.1.1 的稳定性更新，重点完善工作区保存与恢复、实验身份、Free／Guide／Demo 三模式状态一致性、运行时恢复、桌面更新自救及三语言气律实验室品牌。",
+        "zh-TW": "5.1.2 是基於 5.1.1 的穩定性更新，重點完善工作區儲存與還原、實驗身分、Free／Guide／Demo 三模式狀態一致性、執行階段還原、桌面更新自救及三語言氣律實驗室品牌。",
+        "en": "Version 5.1.2 is a stability update to 5.1.1, focused on workspace saving and recovery, experiment identity, consistent Free, Guide, and Demo state, runtime recovery, desktop update recovery, and the trilingual Gas Laws Lab brand."
+      },
+      "sections": [
+        {
+          "type": "fixed",
+          "title": {
+            "zh-CN": "工作区保存与恢复",
+            "zh-TW": "工作區儲存與還原",
+            "en": "Workspace saving and recovery"
+          },
+          "items": [
+            {
+              "scope": "legacy-423-migration",
+              "importance": "high",
+              "title": {
+                "zh-CN": "恢复 5.1.1 无法读取的合法旧工作区",
+                "zh-TW": "還原 5.1.1 無法讀取的合法舊工作區",
+                "en": "Restored valid legacy workspaces that 5.1.1 could not read"
+              },
+              "body": {
+                "zh-CN": "补齐 4.2.3 工作区和 5.1.1 空白会话所需的 Free、Guide、Demo 固定参数、传感器、旋塞计时、历史 U1 等待锚点及模式投影迁移。合法旧资料会被精确规范化，真正损坏的当前格式仍保持严格拒绝。",
+                "zh-TW": "補齊 4.2.3 工作區和 5.1.1 空白工作階段所需的 Free、Guide、Demo 固定參數、感測器、旋塞計時、歷史 U1 等待錨點及模式投影遷移。合法舊資料會被精確規範化，真正損壞的目前格式仍保持嚴格拒絕。",
+                "en": "Migration now covers the Free, Guide, and Demo fixed parameters, sensors, stopcock timing, historical U1 wait anchor, and mode projections needed by 4.2.3 workspaces and blank 5.1.1 sessions. Valid legacy data is normalized precisely, while genuinely corrupt current data remains strictly rejected."
+              }
+            },
+            {
+              "scope": "workspace-identity-and-verified-save",
+              "importance": "high",
+              "title": {
+                "zh-CN": "让实验身份和保存结果保持一致",
+                "zh-TW": "讓實驗身分和儲存結果保持一致",
+                "en": "Kept experiment identity and saved results consistent"
+              },
+              "body": {
+                "zh-CN": "用户可见的 001、002 编号与内部持久化 ID 分离；永久删除任意或全部实验后重新新建，会获得全新且不复用的内部 ID，并立即生成 Free、Guide、Demo 三条模式记录。普通保存只有在事务提交后严格回读文件、模式记录和 revision 全部一致时才报告成功，失败会保留既有资料并阻止静默退出。",
+                "zh-TW": "使用者可見的 001、002 編號與內部持久化 ID 分離；永久刪除任意或全部實驗後重新建立，會取得全新且不重複使用的內部 ID，並立即產生 Free、Guide、Demo 三筆模式記錄。一般儲存只有在交易提交後嚴格回讀檔案、模式記錄和 revision 全部一致時才回報成功，失敗會保留既有資料並阻止無提示結束。",
+                "en": "Visible 001 and 002 numbering is separate from persistent identity. Recreating experiments after permanently deleting any or all files produces a fresh, never-reused internal ID and immediately creates Free, Guide, and Demo mode records. A normal save reports success only after strict post-commit reconstruction verifies files, mode records, and revision; failure preserves existing data and prevents silent exit."
+              }
+            }
+          ]
+        },
+        {
+          "type": "fixed",
+          "title": {
+            "zh-CN": "实验运行稳定性",
+            "zh-TW": "實驗執行穩定性",
+            "en": "Experiment runtime stability"
+          },
+          "items": [
+            {
+              "scope": "heat-capacity-mode-recovery",
+              "importance": "high",
+              "title": {
+                "zh-CN": "稳定三模式切换与计时恢复",
+                "zh-TW": "穩定三模式切換與計時還原",
+                "en": "Stabilized three-mode switching and timing recovery"
+              },
+              "body": {
+                "zh-CN": "Free、Guide、Demo 切换会在新场景真正就绪后恢复对应运行状态；错误、退出和刷新恢复期间暂停提醒与实时 tick，避免后台计时继续推进。",
+                "zh-TW": "Free、Guide、Demo 切換會在新場景真正就緒後還原對應執行狀態；錯誤、結束和重新整理還原期間暫停提醒與即時 tick，避免背景計時繼續推進。",
+                "en": "Free, Guide, and Demo switching restores the corresponding run state only after the new scene is genuinely ready, while reminders and live ticks pause during failure, exit, and refresh recovery so timing cannot continue in the background."
+              }
+            },
+            {
+              "scope": "webgl-runtime-recovery",
+              "importance": "high",
+              "title": {
+                "zh-CN": "统一 WebGL 与数值边界恢复",
+                "zh-TW": "統一 WebGL 與數值邊界還原",
+                "en": "Unified WebGL and numeric-boundary recovery"
+              },
+              "body": {
+                "zh-CN": "真实 WebGL 上下文丢失进入统一冻结、错误卡和重试路径，场景连续两帧就绪后才恢复运行；运行时间及显示值的边界舍入不再造成正常保存被误判。",
+                "zh-TW": "真實 WebGL 上下文遺失進入統一凍結、錯誤卡和重試路徑，場景連續兩幀就緒後才恢復執行；執行時間及顯示值的邊界捨入不再造成正常儲存被誤判。",
+                "en": "A real WebGL context loss enters the shared freeze, error-card, and retry path, with runtime resuming only after two ready frames; boundary rounding of runtime and displayed values no longer causes valid saves to be rejected."
+              }
+            }
+          ]
+        },
+        {
+          "type": "fixed",
+          "title": {
+            "zh-CN": "桌面更新与恢复",
+            "zh-TW": "桌面更新與還原",
+            "en": "Desktop update and recovery"
+          },
+          "items": [
+            {
+              "scope": "persistence-recovery-update",
+              "importance": "high",
+              "title": {
+                "zh-CN": "让持久化故障页能够安全获取更新",
+                "zh-TW": "讓持久化故障頁能夠安全取得更新",
+                "en": "Made updates available from persistence failures"
+              },
+              "body": {
+                "zh-CN": "只读故障页支持检查、下载、重启安装和打开受信任的最新发布页，保留无边框桌面的窗口控制，并正确响应安装前保存协调；初始化失败前不再运行临时命名空间清理。覆盖安装继续复用原 appId、NSIS 安装身份、更新仓库和用户资料目录。",
+                "zh-TW": "唯讀故障頁支援檢查、下載、重新啟動安裝和開啟受信任的最新發佈頁，保留無邊框桌面的視窗控制，並正確回應安裝前儲存協調；初始化失敗前不再執行暫時命名空間清理。覆蓋安裝繼續重用原 appId、NSIS 安裝身分、更新儲存庫和使用者資料目錄。",
+                "en": "The read-only failure page can check, download, restart-install, or open the trusted latest release, retains frameless desktop window controls, and correctly acknowledges pre-install persistence coordination; temporary-namespace cleanup no longer runs before initialization succeeds. An over-install continues to reuse the existing appId, NSIS identity, update repository, and user-data directory."
+              }
+            }
+          ]
+        },
+        {
+          "type": "changed",
+          "title": {
+            "zh-CN": "品牌与图标",
+            "zh-TW": "品牌與圖示",
+            "en": "Brand and icon"
+          },
+          "items": [
+            {
+              "scope": "gas-laws-lab-brand",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "启用三语言气律实验室名称与新图标",
+                "zh-TW": "啟用三語言氣律實驗室名稱與新圖示",
+                "en": "Introduced the trilingual Gas Laws Lab name and new icon"
+              },
+              "body": {
+                "zh-CN": "应用内名称随语言显示为“气律实验室”“氣律實驗室”或 “Gas Laws Lab”；Windows 外壳使用稳定的 “Gas Laws Lab”。新图标覆盖 Windows 七档 ICO 和网页 PNG，同时保持原 appId、安装身份、更新仓库与 hard-sphere-lab 用户资料目录。",
+                "zh-TW": "應用程式內名稱隨語言顯示為「气律实验室」「氣律實驗室」或 “Gas Laws Lab”；Windows 外殼使用穩定的 “Gas Laws Lab”。新圖示涵蓋 Windows 七檔 ICO 和網頁 PNG，同時保持原 appId、安裝身分、更新儲存庫與 hard-sphere-lab 使用者資料目錄。",
+                "en": "The in-app name follows the selected locale as 气律实验室, 氣律實驗室, or Gas Laws Lab, while the Windows shell uses stable Gas Laws Lab metadata. The new icon covers seven Windows ICO sizes and web PNGs without changing appId, installer identity, update repository, or the hard-sphere-lab user-data directory."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "5.1.1",
+      "date": "2026-07-16",
+      "channel": "stable",
+      "download": {
+        "releasePage": "https://github.com/WangJN-ing/hard-sphere-lab-release/releases/tag/v5.1.1",
+        "windowsInstaller": "https://github.com/WangJN-ing/hard-sphere-lab-release/releases/download/v5.1.1/heat-capacity-lab-setup-5.1.1.exe"
+      },
+      "summary": {
+        "zh-CN": "5.1.1 是面向所有 4.2.x 用户的稳定更新，完善热容比实验的温度与热力学模型、分子和仪器反馈、三模式会话与精确视角恢复，并重建持久化、GLB 运行和桌面更新可靠性。",
+        "zh-TW": "5.1.1 是面向所有 4.2.x 使用者的穩定更新，完善熱容比實驗的溫度與熱力學模型、分子和儀器回饋、三模式工作階段與精確視角還原，並重建持久化、GLB 執行和桌面更新可靠性。",
+        "en": "Version 5.1.1 is a stable update for all 4.2.x users, refining the heat-capacity temperature and thermodynamic model, molecular and instrument feedback, three-mode sessions and exact camera restoration, while rebuilding persistence, GLB runtime, and desktop update reliability."
+      },
+      "sections": [
+        {
+          "type": "changed",
+          "title": {
+            "zh-CN": "改进",
+            "zh-TW": "改進",
+            "en": "Changed"
+          },
+          "items": [
+            {
+              "scope": "thermodynamic-model",
+              "importance": "high",
+              "title": {
+                "zh-CN": "完善温度响应与热力学物理模型",
+                "zh-TW": "完善溫度響應與熱力學物理模型",
+                "en": "Refined temperature response and thermodynamic physics"
+              },
+              "body": {
+                "zh-CN": "统一真实与理想参数下的温度、压力、放气和回温过程，使 U0、U1、U2、γ、标准参考与过程回顾使用一致的物理口径，并让空气和氦气实验保持可解释的正常结果与错误偏差。",
+                "zh-TW": "統一真實與理想參數下的溫度、壓力、放氣和回溫過程，使 U0、U1、U2、γ、標準參考與過程回顧使用一致的物理口徑，並讓空氣和氦氣實驗保持可解釋的正常結果與錯誤偏差。",
+                "en": "Temperature, pressure, release, and thermal recovery now share one physical interpretation across real and ideal parameters, keeping U0, U1, U2, gamma, standard references, and Process Review consistent for both air and helium experiments."
+              }
+            },
+            {
+              "scope": "molecular-instrument-feedback",
+              "importance": "high",
+              "title": {
+                "zh-CN": "增强分子可视化、声音与仪器反馈",
+                "zh-TW": "增強分子視覺化、聲音與儀器回饋",
+                "en": "Improved molecular, audio, and instrument feedback"
+              },
+              "body": {
+                "zh-CN": "分子运动、旋塞与阀门动效、压力表和数字显示、调零与打气反馈现在与同一实验状态同步；快速操作、全局静音、零音量、模式恢复静音和放气停止均使用统一音频生命周期。",
+                "zh-TW": "分子運動、旋塞與閥門動效、壓力錶和數位顯示、調零與打氣回饋現在與同一實驗狀態同步；快速操作、全域靜音、零音量、模式還原靜音和放氣停止均使用統一音訊生命週期。",
+                "en": "Molecular motion, stopcock and valve animation, gauge and digital displays, zeroing, and pumping feedback now follow the same experiment state, with one audio lifecycle for rapid interaction, global mute, zero volume, silent mode restoration, and immediate release shutdown."
+              }
+            },
+            {
+              "scope": "three-mode-sessions",
+              "importance": "high",
+              "title": {
+                "zh-CN": "统一演示、引导与自由模式会话",
+                "zh-TW": "統一示範、引導與自由模式工作階段",
+                "en": "Unified Demo, Guide, and Free mode sessions"
+              },
+              "body": {
+                "zh-CN": "所有同文件模式变化现在通过同一切换协调器，等待真实仪器或相机运动完成并采用最后一次目标；五分钟等待、首次预热、计时器、实验记录、粒子状态、焦点和精确相机姿态可在切换、刷新及文件往返后恢复。",
+                "zh-TW": "所有同檔案模式變化現在透過同一切換協調器，等待真實儀器或相機運動完成並採用最後一次目標；五分鐘等待、首次預熱、計時器、實驗記錄、粒子狀態、焦點和精確相機姿態可在切換、重新整理及檔案往返後還原。",
+                "en": "Every same-file mode change now uses one coordinator that waits for real instrument or camera motion and honors the latest target. Five-minute waits, first preheat, timers, trials, particles, focus, and exact camera poses survive switching, refresh, and file round trips."
+              }
+            },
+            {
+              "scope": "engineering-experience",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "统一工程界面、字体与演示节奏",
+                "zh-TW": "統一工程介面、字型與示範節奏",
+                "en": "Unified engineering UI, fonts, and demonstration pacing"
+              },
+              "body": {
+                "zh-CN": "工程工作台、实验仪器模型、菜单与结果页的层级和反馈更加一致；离线界面仅使用随应用分发的 Noto Sans SC 与 JetBrains Mono，演示和引导等待过程保持清晰、可恢复且不遮挡关键仪器状态。",
+                "zh-TW": "工程工作臺、實驗儀器模型、選單與結果頁的層級和回饋更加一致；離線介面僅使用隨應用程式分發的 Noto Sans SC 與 JetBrains Mono，示範和引導等待過程保持清晰、可還原且不遮擋關鍵儀器狀態。",
+                "en": "The engineering workbench, instrument model, menus, and result pages now share clearer hierarchy and feedback. Offline UI uses only the bundled Noto Sans SC and JetBrains Mono fonts, while Demo and Guide waits remain visible, resumable, and unobtrusive."
+              }
+            }
+          ]
+        },
+        {
+          "type": "fixed",
+          "title": {
+            "zh-CN": "可靠性修复",
+            "zh-TW": "可靠性修復",
+            "en": "Reliability fixes"
+          },
+          "items": [
+            {
+              "scope": "indexeddb-persistence",
+              "importance": "high",
+              "title": {
+                "zh-CN": "重建异步工作区持久化",
+                "zh-TW": "重建非同步工作區持久化",
+                "en": "Rebuilt asynchronous workspace persistence"
+              },
+              "body": {
+                "zh-CN": "工作区、文件和每个热容模式的规范状态迁移到原生 IndexedDB，采用防抖、最长等待和生命周期即时刷新；4.2.3 本地存档只在完整写入与重建验证后删除，事务或配额失败会保留最后一次成功版本并明确提示。",
+                "zh-TW": "工作區、檔案和每個熱容模式的規範狀態遷移到原生 IndexedDB，採用防抖、最長等待和生命週期即時刷新；4.2.3 本機存檔只在完整寫入與重建驗證後刪除，交易或配額失敗會保留最後一次成功版本並明確提示。",
+                "en": "Workspace metadata, files, and the canonical state for each heat-capacity mode now use native IndexedDB with debouncing, maximum wait, and lifecycle flushes. Version 4.2.3 local saves are removed only after verified write and reconstruction, while transaction or quota failures preserve the last successful version and show a clear error."
+              }
+            },
+            {
+              "scope": "glb-audio-runtime",
+              "importance": "high",
+              "title": {
+                "zh-CN": "修复 GLB、动效、音频与运行时重试边界",
+                "zh-TW": "修復 GLB、動效、音訊與執行階段重試邊界",
+                "en": "Hardened GLB, animation, audio, and runtime retry boundaries"
+              },
+              "body": {
+                "zh-CN": "GLB 克隆只释放自身拥有的材质和运行时资源，不再释放共享缓存；资源重试与运行时重试分离，渲染帧、事件、延迟回调和音频解码异常统一进入可重试错误卡，并停止相关计时与声音。",
+                "zh-TW": "GLB 複本只釋放自身擁有的材質和執行階段資源，不再釋放共用快取；資源重試與執行階段重試分離，算繪影格、事件、延遲回呼和音訊解碼異常統一進入可重試錯誤卡，並停止相關計時與聲音。",
+                "en": "GLB clones now dispose only their owned materials and runtime resources, never shared cache assets. Asset and runtime retries are separate, while frame, event, delayed callback, and audio decode failures enter one retryable error card and stop related timers and sound."
+              }
+            },
+            {
+              "scope": "desktop-updater",
+              "importance": "high",
+              "title": {
+                "zh-CN": "强化桌面更新与下载可靠性",
+                "zh-TW": "強化桌面更新與下載可靠性",
+                "en": "Hardened desktop update and download reliability"
+              },
+              "body": {
+                "zh-CN": "更新下载采用 single-flight，同一更新的重复点击复用一个任务；更新窗口继续提供结构化三语言说明、可验证的手动下载入口和重试路径，并保持安装器、latest.yml 与 blockmap 的完整更新契约。",
+                "zh-TW": "更新下載採用 single-flight，同一更新的重複點擊重用一個工作；更新視窗繼續提供結構化三語言說明、可驗證的手動下載入口和重試路徑，並保持安裝程式、latest.yml 與 blockmap 的完整更新契約。",
+                "en": "Update downloads now use single-flight so repeated clicks reuse one task. The update window retains structured trilingual notes, a validated manual download route, retry handling, and the complete installer, latest.yml, and blockmap update contract."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "4.2.3",
+      "date": "2026-07-11",
+      "channel": "stable",
+      "download": {
+        "releasePage": "https://github.com/WangJN-ing/hard-sphere-lab-release/releases/tag/v4.2.3",
+        "windowsInstaller": "https://github.com/WangJN-ing/hard-sphere-lab-release/releases/download/v4.2.3/heat-capacity-lab-setup-4.2.3.exe"
+      },
+      "summary": {
+        "zh-CN": "完成工作台架构收口和发布前稳定化，统一持久化、参数、更新器与热容实验运行边界，并清理不再使用的旧模型、旧样式和重复约束。",
+        "zh-TW": "完成工作臺架構收口與發佈前穩定化，統一持久化、參數、更新器與熱容實驗執行邊界，並清理不再使用的舊模型、舊樣式和重複約束。",
+        "en": "Completes the workbench architecture consolidation and release stabilization, unifies persistence, parameter, updater, and heat-capacity runtime boundaries, and removes obsolete models, styles, and duplicate contracts."
+      },
+      "sections": [
+        {
+          "type": "changed",
+          "title": {
+            "zh-CN": "改进",
+            "zh-TW": "改進",
+            "en": "Changed"
+          },
+          "items": [
+            {
+              "scope": "workbench-architecture",
+              "importance": "high",
+              "title": {
+                "zh-CN": "工作台核心界面按职责拆分",
+                "zh-TW": "工作臺核心介面按職責拆分",
+                "en": "Workbench UI responsibilities modularized"
+              },
+              "body": {
+                "zh-CN": "顶部命令、设置窗口、更新窗口、参数对话框、空工作区和文件展示逻辑现在由独立组件与模块维护，降低主工作台文件的耦合度。",
+                "zh-TW": "頂部命令、設定視窗、更新視窗、參數對話框、空工作區和檔案展示邏輯現在由獨立元件與模組維護，降低主工作臺檔案的耦合度。",
+                "en": "Top commands, settings, updates, parameter dialogs, empty workspace, and file presentation now live in focused components and modules, reducing coupling in the main workbench."
+              }
+            },
+            {
+              "scope": "persistence-boundaries",
+              "importance": "high",
+              "title": {
+                "zh-CN": "统一实验持久化和恢复边界",
+                "zh-TW": "統一實驗持久化和恢復邊界",
+                "en": "Unified experiment persistence boundaries"
+              },
+              "body": {
+                "zh-CN": "标准模拟与理想气体共享运行态恢复规则，热容实验使用独立配置快照、恢复归一化和标签页注册表，同时继续读取必要的旧存档格式。",
+                "zh-TW": "標準模擬與理想氣體共用執行態恢復規則，熱容實驗使用獨立設定快照、恢復正規化和分頁登錄表，同時繼續讀取必要的舊存檔格式。",
+                "en": "Standard and ideal-gas experiments share runtime recovery rules, while heat-capacity files use dedicated configuration snapshots, recovery normalization, and tab registries with required legacy save compatibility."
+              }
+            },
+            {
+              "scope": "heat-capacity-guidance",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "完善热容实验说明和导航一致性",
+                "zh-TW": "完善熱容實驗說明和導覽一致性",
+                "en": "Improved heat-capacity guidance and navigation"
+              },
+              "body": {
+                "zh-CN": "实验说明入口现在可在演示、引导和自由模式使用，新建实验时自动展示一次；左侧栏子项字号和粗细与 3D 预览保持一致。",
+                "zh-TW": "實驗說明入口現在可在演示、引導和自由模式使用，新建實驗時自動展示一次；左側欄子項字號和粗細與 3D 預覽保持一致。",
+                "en": "Experiment guidance is available in Demo, Guide, and Free modes and appears once for new files; left-sidebar child labels now match the 3D Preview typography."
+              }
+            },
+            {
+              "scope": "model-metrics",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "统一热容过程指标与参数策略",
+                "zh-TW": "統一熱容過程指標與參數策略",
+                "en": "Unified heat-capacity metrics and parameter policy"
+              },
+              "body": {
+                "zh-CN": "过程回顾、评分和标准参考共用放气起点与相对误差计算；高级参数可见性和输入归一化由统一注册表维护。",
+                "zh-TW": "過程回顧、評分和標準參考共用放氣起點與相對誤差計算；進階參數可見性和輸入正規化由統一登錄表維護。",
+                "en": "Process Review, scoring, and standard references share release-start and relative-error calculations, while advanced parameter visibility and input normalization use one registry."
+              }
+            }
+          ]
+        },
+        {
+          "type": "fixed",
+          "title": {
+            "zh-CN": "修复",
+            "zh-TW": "修復",
+            "en": "Fixed"
+          },
+          "items": [
+            {
+              "scope": "guidance-pause-queue",
+              "importance": "high",
+              "title": {
+                "zh-CN": "修复说明、暂停和提醒队列边界",
+                "zh-TW": "修復說明、暫停和提醒佇列邊界",
+                "en": "Fixed guidance, pause, and reminder queue boundaries"
+              },
+              "body": {
+                "zh-CN": "实验说明不再被非引导模式错误关闭；说明弹出期间会暂停分子动画和强提醒计时。演示模式暂停时保留当前观察视角和步骤等待进度。",
+                "zh-TW": "實驗說明不再被非引導模式錯誤關閉；說明彈出期間會暫停分子動畫和強提醒計時。演示模式暫停時保留目前觀察視角和步驟等待進度。",
+                "en": "Guidance no longer closes outside Guide mode; open lessons suspend molecule animation and reminder timing, while Demo pause preserves the current camera and step wait progress."
+              }
+            },
+            {
+              "scope": "legacy-cleanup",
+              "importance": "high",
+              "title": {
+                "zh-CN": "清理旧模型、样式和重复接口",
+                "zh-TW": "清理舊模型、樣式和重複介面",
+                "en": "Removed obsolete models, styles, and interfaces"
+              },
+              "body": {
+                "zh-CN": "删除未引用工作台样式、旧 PDF 查看器、旧全局 UI 状态、重复持久化归一化器、重复过程指标和无生产用途的导出接口。",
+                "zh-TW": "刪除未引用工作臺樣式、舊 PDF 檢視器、舊全域 UI 狀態、重複持久化正規化器、重複過程指標和無生產用途的匯出介面。",
+                "en": "Removed unused workbench styles, the legacy PDF viewer, obsolete global UI state, duplicate persistence normalizers and process metrics, and production exports without runtime consumers."
+              }
+            },
+            {
+              "scope": "release-integrity",
+              "importance": "high",
+              "title": {
+                "zh-CN": "强化桌面构建与更新资产完整性",
+                "zh-TW": "強化桌面建置與更新資產完整性",
+                "en": "Hardened desktop build and update integrity"
+              },
+              "body": {
+                "zh-CN": "生产构建现在校验输出边界、导出器源码指纹、版本元数据和第三方版权清单，防止旧导出器或不完整更新资产进入发布。",
+                "zh-TW": "生產建置現在驗證輸出邊界、匯出器原始碼指紋、版本中繼資料和第三方版權清單，防止舊匯出器或不完整更新資產進入發佈。",
+                "en": "Production builds now validate output boundaries, exporter source fingerprints, version metadata, and third-party notices to keep stale exporters and incomplete update assets out of releases."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "4.2.2",
+      "date": "2026-07-07",
+      "channel": "stable",
+      "download": {
+        "releasePage": "https://github.com/WangJN-ing/hard-sphere-lab-release/releases/tag/v4.2.2",
+        "windowsInstaller": "https://github.com/WangJN-ing/hard-sphere-lab-release/releases/download/v4.2.2/heat-capacity-lab-setup-4.2.2.exe"
+      },
+      "summary": {
+        "zh-CN": "继续完善自由模式真实/理想参数体系，加入空气与氦气气体类型联动，校准氦气 1.67 组的正常结果和错误操作偏差，并统一过程回顾、下拉菜单、悬浮提示和桌面更新说明。",
+        "zh-TW": "繼續完善自由模式真實/理想參數體系，加入空氣與氦氣氣體類型連動，校準氦氣 1.67 組的正常結果和錯誤操作偏差，並統一過程回顧、下拉選單、懸浮提示和桌面更新說明。",
+        "en": "Continues refining Free Mode real/ideal parameters with air and helium gas-type linking, calibrated helium 1.67 behavior, clearer error-operation separation, and unified process review, dropdowns, tooltips, and desktop update notes."
+      },
+      "sections": [
+        {
+          "type": "added",
+          "title": {
+            "zh-CN": "新增",
+            "zh-TW": "新增",
+            "en": "Added"
+          },
+          "items": [
+            {
+              "scope": "heat-capacity-gas-type",
+              "importance": "high",
+              "title": {
+                "zh-CN": "自由模式加入空气 / 氦气气体类型",
+                "zh-TW": "自由模式加入空氣 / 氦氣氣體類型",
+                "en": "Air and helium gas types in Free Mode"
+              },
+              "body": {
+                "zh-CN": "普通参数区现在可以选择空气或氦气。空气使用双原子分子理论 gamma = 1.400，氦气使用单原子分子理论 gamma = 1.667，并同步切换底层物理参数、过程回顾和数据结果中的理论值。",
+                "zh-TW": "普通參數區現在可以選擇空氣或氦氣。空氣使用雙原子分子理論 gamma = 1.400，氦氣使用單原子分子理論 gamma = 1.667，並同步切換底層物理參數、過程回顧和資料結果中的理論值。",
+                "en": "The basic parameter section can now switch between air and helium. Air uses the diatomic theoretical gamma = 1.400, helium uses the monatomic theoretical gamma = 1.667, and the physics model, Process Review, and Data & Results theory values stay linked."
+              }
+            },
+            {
+              "scope": "heat-capacity-standard-reference",
+              "importance": "high",
+              "title": {
+                "zh-CN": "过程回顾使用标准流程参考快照",
+                "zh-TW": "過程回顧使用標準流程參考快照",
+                "en": "Standard-process reference snapshot for Process Review"
+              },
+              "body": {
+                "zh-CN": "过程回顾保存同一参数条件下的标准操作参考曲线、记录窗口和操作上限，用于对比实际操作与标准流程，并移除旧的合成标准过程模型。",
+                "zh-TW": "過程回顧保存同一參數條件下的標準操作參考曲線、記錄窗口和操作上限，用於對比實際操作與標準流程，並移除舊的合成標準過程模型。",
+                "en": "Process Review stores a same-parameter standard-operation trace, record windows, and operation limit for comparing actual work against the standard flow, replacing the old synthetic standard-process model."
+              }
+            }
+          ]
+        },
+        {
+          "type": "changed",
+          "title": {
+            "zh-CN": "改进",
+            "zh-TW": "改進",
+            "en": "Changed"
+          },
+          "items": [
+            {
+              "scope": "heat-capacity-error-calibration",
+              "importance": "high",
+              "title": {
+                "zh-CN": "校准氦气 1.67 组的正常区间和错误偏差",
+                "zh-TW": "校準氦氣 1.67 組的正常區間和錯誤偏差",
+                "en": "Calibrated helium 1.67 normal and error ranges"
+              },
+              "body": {
+                "zh-CN": "氦气标准操作现在稳定贴近 1.67；旋塞长开和 U2 迟记等错误会围绕氦气理论值产生更明显偏差，避免错误操作只与正常结果相差很小。",
+                "zh-TW": "氦氣標準操作現在穩定貼近 1.67；旋塞長開和 U2 遲記等錯誤會圍繞氦氣理論值產生更明顯偏差，避免錯誤操作只與正常結果相差很小。",
+                "en": "Helium standard operation now stays close to 1.67, while long stopcock openings and late U2 recording produce clearer deviations around the helium theory value instead of nearly matching normal runs."
+              }
+            },
+            {
+              "scope": "heat-capacity-process-review-ui",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "优化过程回顾窗口和下拉菜单样式",
+                "zh-TW": "優化過程回顧窗口和下拉選單樣式",
+                "en": "Polished Process Review window and dropdown styling"
+              },
+              "body": {
+                "zh-CN": "过程回顾页签、窗口标题、实验组下拉菜单和真实/理想状态菜单的层级、边距、字号、箭头动效和菜单边框保持一致，减少视觉拥挤。",
+                "zh-TW": "過程回顧頁籤、窗口標題、實驗組下拉選單和真實/理想狀態選單的層級、邊距、字號、箭頭動效和選單邊框保持一致，減少視覺擁擠。",
+                "en": "The Process Review tab, window heading, trial dropdown, and real/ideal state menu now align hierarchy, spacing, type scale, chevron animation, and menu borders for a less crowded interface."
+              }
+            },
+            {
+              "scope": "heat-capacity-demo-focus",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "增强演示模式视角引导",
+                "zh-TW": "增強演示模式視角引導",
+                "en": "Stronger demo-mode camera focus"
+              },
+              "body": {
+                "zh-CN": "演示模式会在调零、打气、阀门和旋塞动作时切换到更合适的观察视角，操作完成后自动回到默认视角，不显示引导模式面板。",
+                "zh-TW": "演示模式會在調零、打氣、閥門和旋塞動作時切換到更合適的觀察視角，操作完成後自動回到預設視角，不顯示引導模式面板。",
+                "en": "Demo Mode now shifts to clearer viewing angles for zeroing, pumping, valve, and stopcock actions, then returns to the default view without showing the guided-mode panel."
+              }
+            },
+            {
+              "scope": "heat-capacity-tooltips",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "统一悬浮提示和禁用说明",
+                "zh-TW": "統一懸浮提示和停用說明",
+                "en": "Unified tooltips and disabled-state copy"
+              },
+              "body": {
+                "zh-CN": "气体类型、真实/理想状态、参数说明和禁用状态现在使用统一固定样式的悬浮提示；已有进程或实验组时会说明为什么不能切换。",
+                "zh-TW": "氣體類型、真實/理想狀態、參數說明和停用狀態現在使用統一固定樣式的懸浮提示；已有進程或實驗組時會說明為什麼不能切換。",
+                "en": "Gas type, real/ideal profile, parameter help, and disabled states now use one fixed tooltip style, including explanations when progress or existing trial groups lock a switch."
+              }
+            }
+          ]
+        },
+        {
+          "type": "fixed",
+          "title": {
+            "zh-CN": "修复",
+            "zh-TW": "修復",
+            "en": "Fixed"
+          },
+          "items": [
+            {
+              "scope": "heat-capacity-model-cleanup",
+              "importance": "high",
+              "title": {
+                "zh-CN": "清理旧模型和旧字段残留",
+                "zh-TW": "清理舊模型和舊欄位殘留",
+                "en": "Cleaned legacy model and field residue"
+              },
+              "body": {
+                "zh-CN": "删除旧标准过程实现，保留必要的旧文件兼容迁移，并增加静态回归测试，防止旧处理页、旧字段、旧多组引导和旧标准参考路径重新进入源码。",
+                "zh-TW": "刪除舊標準過程實作，保留必要的舊檔相容遷移，並增加靜態回歸測試，防止舊處理頁、舊欄位、舊多組引導和舊標準參考路徑重新進入源碼。",
+                "en": "Deletes the old standard-process implementation, keeps only required legacy-file migrations, and adds static regression checks so removed processing pages, fields, multi-group guide paths, and standard-reference paths do not return."
+              }
+            },
+            {
+              "scope": "desktop-update",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "桌面自动更新资产保持完整",
+                "zh-TW": "桌面自動更新資產保持完整",
+                "en": "Desktop auto-update assets remain complete"
+              },
+              "body": {
+                "zh-CN": "本版本继续发布 NSIS 安装包、latest.yml 和 blockmap，已安装的 4.2.1 客户端可以通过应用内更新检测到 4.2.2。",
+                "zh-TW": "本版本繼續發布 NSIS 安裝包、latest.yml 和 blockmap，已安裝的 4.2.1 用戶端可以透過應用內更新偵測到 4.2.2。",
+                "en": "This release continues to publish the NSIS installer, latest.yml, and blockmap so installed 4.2.1 clients can detect 4.2.2 in-app."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "4.2.1",
+      "date": "2026-07-07",
+      "channel": "stable",
+      "download": {
+        "releasePage": "https://github.com/WangJN-ing/hard-sphere-lab-release/releases/tag/v4.2.1",
+        "windowsInstaller": "https://github.com/WangJN-ing/hard-sphere-lab-release/releases/download/v4.2.1/heat-capacity-lab-setup-4.2.1.exe"
+      },
+      "summary": {
+        "zh-CN": "重构空气比热容比实验的真实/理想参数体系、引导与演示流程、过程回顾和 GLB 交互细节，并清理旧模型与旧 UI 残余，使自由实验、引导实验和演示实验的边界更清晰。",
+        "zh-TW": "重構空氣比熱容比實驗的真實／理想參數體系、引導與演示流程、過程回顧和 GLB 互動細節，並清理舊模型與舊 UI 殘餘，使自由實驗、引導實驗和演示實驗的邊界更清晰。",
+        "en": "Rebuilds the heat-capacity ratio lab around clearer real/ideal parameter profiles, guided and demo workflows, process review, and GLB interactions, while removing legacy model and UI paths."
+      },
+      "sections": [
+        {
+          "type": "added",
+          "title": {
+            "zh-CN": "新增",
+            "zh-TW": "新增",
+            "en": "Added"
+          },
+          "items": [
+            {
+              "scope": "heat-capacity-ideal-profile",
+              "importance": "high",
+              "title": {
+                "zh-CN": "自由模式新增理想状态参数组合",
+                "zh-TW": "自由模式新增理想狀態參數組合",
+                "en": "Ideal parameter profile for Free Mode"
+              },
+              "body": {
+                "zh-CN": "当前参数侧栏新增真实模拟 / 理想状态切换。理想状态会锁定可调参数、关闭非理想干扰、隔离实验组编号，并在数据与过程回顾中单独显示，不参与真实模拟平均值和评分。",
+                "zh-TW": "目前參數側欄新增真實模擬／理想狀態切換。理想狀態會鎖定可調參數、關閉非理想干擾、隔離實驗組編號，並在資料與過程回顧中單獨顯示，不參與真實模擬平均值和評分。",
+                "en": "The Current Parameters sidebar now has a real/ideal profile toggle. Ideal runs lock adjustable parameters, disable non-ideal disturbances, keep separate trial numbering, and are excluded from real-run averages and scoring."
+              }
+            },
+            {
+              "scope": "heat-capacity-results",
+              "importance": "high",
+              "title": {
+                "zh-CN": "真实与理想实验组独立查看",
+                "zh-TW": "真實與理想實驗組獨立查看",
+                "en": "Separate real and ideal result views"
+              },
+              "body": {
+                "zh-CN": "数据与结果、过程回顾新增统一的实验类型菜单，可在真实模拟和理想状态之间切换，并保持两类实验各自独立编号。",
+                "zh-TW": "資料與結果、過程回顧新增統一的實驗類型選單，可在真實模擬和理想狀態之間切換，並保持兩類實驗各自獨立編號。",
+                "en": "Data & Results and Process Review now share an experiment-type menu for switching between real and ideal records with independent numbering."
+              }
+            }
+          ]
+        },
+        {
+          "type": "changed",
+          "title": {
+            "zh-CN": "改进",
+            "zh-TW": "改進",
+            "en": "Changed"
+          },
+          "items": [
+            {
+              "scope": "heat-capacity-guide-demo",
+              "importance": "high",
+              "title": {
+                "zh-CN": "演示模式与引导模式流程统一",
+                "zh-TW": "演示模式與引導模式流程統一",
+                "en": "Unified demo and guide workflows"
+              },
+              "body": {
+                "zh-CN": "演示和引导流程现在明确展示 120 mV 打气目标、五分钟回温等待和完成后的退出状态。完成后可继续查看左侧栏数据，点击退出后再回到自由模式。",
+                "zh-TW": "演示和引導流程現在明確展示 120 mV 打氣目標、五分鐘回溫等待和完成後的退出狀態。完成後可繼續查看左側欄資料，點擊退出後再回到自由模式。",
+                "en": "Demo and guide flows now clearly show the 120 mV pumping target, five-minute recovery wait, and a completed state that keeps results visible until the user exits back to Free Mode."
+              }
+            },
+            {
+              "scope": "heat-capacity-parameters",
+              "importance": "high",
+              "title": {
+                "zh-CN": "普通参数和高级参数界面重建",
+                "zh-TW": "普通參數和高級參數介面重建",
+                "en": "Rebuilt basic and advanced parameter UI"
+              },
+              "body": {
+                "zh-CN": "参数行改为统一的左右制表位布局，单位固定在输入框右侧；高级参数按语义分组，并把高级参数确认、恢复默认确认和理想状态说明统一为文件级提示。",
+                "zh-TW": "參數列改為統一的左右定位布局，單位固定在輸入框右側；高級參數按語義分組，並把高級參數確認、恢復預設確認和理想狀態說明統一為檔案級提示。",
+                "en": "Parameter rows now use a consistent two-column layout with units inside inputs. Advanced parameters are semantically grouped, and risk/default/ideal confirmations use file-level acknowledgement."
+              }
+            },
+            {
+              "scope": "heat-capacity-process-review",
+              "importance": "high",
+              "title": {
+                "zh-CN": "过程回顾与标准过程更清晰",
+                "zh-TW": "過程回顧與標準過程更清晰",
+                "en": "Clearer process review and standard process"
+              },
+              "body": {
+                "zh-CN": "过程回顾现在将实际曲线、标准曲线、记录窗口、事件时间轴和操作评分放在同一套结构中。理想状态下理论上限固定为 1.400，并以占位符说明不参与评分。",
+                "zh-TW": "過程回顧現在將實際曲線、標準曲線、記錄窗口、事件時間軸和操作評分放在同一套結構中。理想狀態下理論上限固定為 1.400，並以佔位符說明不參與評分。",
+                "en": "Process Review now combines actual traces, standard traces, record windows, event timelines, and operation scoring. Ideal runs use a fixed 1.400 theoretical upper bound and show scoring placeholders."
+              }
+            },
+            {
+              "scope": "heat-capacity-glb",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "GLB 视角、性能档位和交互动效调整",
+                "zh-TW": "GLB 視角、效能檔位和互動動效調整",
+                "en": "GLB view, quality tiers, and interaction effects"
+              },
+              "body": {
+                "zh-CN": "更新 GLB 默认视角、聚焦视角和性能档位映射，改进控件悬浮提示、打气球高亮扩散、强提醒遮罩与可操作区域的命中逻辑。",
+                "zh-TW": "更新 GLB 預設視角、聚焦視角和效能檔位映射，改進控制項懸浮提示、打氣球高亮擴散、強提醒遮罩與可操作區域的命中邏輯。",
+                "en": "Updates the GLB default and focus views, quality-tier mapping, hover tooltips, pump-bulb highlighting, and strong-reminder hit testing."
+              }
+            }
+          ]
+        },
+        {
+          "type": "fixed",
+          "title": {
+            "zh-CN": "修复",
+            "zh-TW": "修復",
+            "en": "Fixed"
+          },
+          "items": [
+            {
+              "scope": "heat-capacity-interaction",
+              "importance": "high",
+              "title": {
+                "zh-CN": "修复自由模式和引导模式的关键交互边界",
+                "zh-TW": "修復自由模式和引導模式的關鍵互動邊界",
+                "en": "Fixes core interaction boundaries"
+              },
+              "body": {
+                "zh-CN": "修复引导完成后自由模式电源异常、打气阀门提示残留、压强报警后仍可继续聚焦打气、U1 记录时机过早、完成实验组删除失效等问题。",
+                "zh-TW": "修復引導完成後自由模式電源異常、打氣閥門提示殘留、壓強警報後仍可繼續聚焦打氣、U1 記錄時機過早、完成實驗組刪除失效等問題。",
+                "en": "Fixes power handling after teaching completion, stale pump-valve warnings, pressure-alarm pump focus locking, early U1 recording, and completed-trial deletion."
+              }
+            },
+            {
+              "scope": "heat-capacity-model-cleanup",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "清理旧模型和旧字段残余",
+                "zh-TW": "清理舊模型和舊欄位殘餘",
+                "en": "Removes legacy model and field residue"
+              },
+              "body": {
+                "zh-CN": "删除旧的合成标准过程模型，统一使用当前标准流程和真实/理想参数域；继续清理旧温升字段、旧多组引导结构、旧性能和旧处理页相关路径。",
+                "zh-TW": "刪除舊的合成標準過程模型，統一使用目前標準流程和真實／理想參數域；繼續清理舊溫升欄位、舊多組引導結構、舊效能和舊處理頁相關路徑。",
+                "en": "Removes the obsolete synthetic standard-process model and keeps standard-flow generation tied to the current real/ideal domains, while guarding against legacy heat-rise, multi-guide, performance, and processing paths."
+              }
+            }
+          ]
+        }
+      ],
+      "knownIssues": []
+    },
+    {
+      "version": "4.1.22",
+      "date": "2026-06-18",
+      "channel": "stable",
+      "download": {
+        "releasePage": "https://github.com/WangJN-ing/hard-sphere-lab-release/releases/tag/v4.1.22",
+        "windowsInstaller": "https://github.com/WangJN-ing/hard-sphere-lab-release/releases/download/v4.1.22/heat-capacity-lab-setup-4.1.22.exe"
+      },
+      "summary": {
+        "zh-CN": "完善标准模拟结果图和正式导出图：软件内结果页改为科研风格 SVG 图表，补齐坐标标签、白底图例和半对数筛选说明；正式 PDF 导出统一图例与图外信息带，并让半对数能量图用散点、选中区间和完整理论参考展示。",
+        "zh-TW": "完善標準模擬結果圖和正式匯出圖：軟體內結果頁改為科研風格 SVG 圖表，補齊座標標籤、白底圖例和半對數篩選說明；正式 PDF 匯出統一圖例與圖外資訊帶，並讓半對數能量圖用散點、選中區間和完整理論參考呈現。",
+        "en": "Improves standard simulation result figures and formal exports: in-app result figures now use scientific SVG charts with axis labels, white boxed legends, and semi-log selection cues; PDF exports now align legends and metadata bands and render semi-log energy as selected/excluded scatter points with a complete theory reference."
+      },
+      "sections": [
+        {
+          "type": "changed",
+          "title": {
+            "zh-CN": "改进",
+            "zh-TW": "改進",
+            "en": "Changed"
+          },
+          "items": [
+            {
+              "scope": "standard-results-ui",
+              "importance": "high",
+              "title": {
+                "zh-CN": "标准模拟结果页图像升级为科研风格",
+                "zh-TW": "標準模擬結果頁圖像升級為科研風格",
+                "en": "Scientific in-app figures for standard results"
+              },
+              "body": {
+                "zh-CN": "结果页的速度分布、能量分布、半对数能量、温度误差和总能量历史不再使用简略预览条，而是使用带坐标轴、网格、Times 风格字体、坐标标签和图例的 SVG 图表，便于直接阅读。",
+                "zh-TW": "結果頁的速度分布、能量分布、半對數能量、溫度誤差和總能量歷史不再使用簡略預覽條，而是使用帶座標軸、網格、Times 風格字體、座標標籤和圖例的 SVG 圖表，便於直接閱讀。",
+                "en": "Speed distribution, energy distribution, semi-log energy, temperature error, and total-energy history previews now render as SVG charts with axes, grids, Times-style typography, axis labels, and legends instead of simplified preview bars."
+              }
+            },
+            {
+              "scope": "standard-semilog",
+              "importance": "high",
+              "title": {
+                "zh-CN": "半对数能量图明确区分选中点和未选点",
+                "zh-TW": "半對數能量圖明確區分選中點和未選點",
+                "en": "Semi-log energy now marks selected and excluded points"
+              },
+              "body": {
+                "zh-CN": "半对数能量图改为散点表达，显示理论线、选中区间边界、选中点和未选点，避免尾部数据突然消失或被误认为普通能量分布柱状图。",
+                "zh-TW": "半對數能量圖改為散點表達，顯示理論線、選中區間邊界、選中點和未選點，避免尾部資料突然消失或被誤認為普通能量分布柱狀圖。",
+                "en": "Semi-log energy charts now use scatter points with a theory line, fit-window boundaries, selected points, and excluded points so tail data does not appear to disappear or resemble the ordinary energy histogram."
+              }
+            },
+            {
+              "scope": "export-figures",
+              "importance": "high",
+              "title": {
+                "zh-CN": "正式导出图统一图例和图外信息带",
+                "zh-TW": "正式匯出圖統一圖例和圖外資訊帶",
+                "en": "Unified legends and metadata bands in formal exports"
+              },
+              "body": {
+                "zh-CN": "PDF 报告中的理想气体验证图、标准模拟分布图和历史图统一使用图内白底图例，样本数、选中区间、分箱数量等读数移到图外信息带，减少遮挡主要数据。",
+                "zh-TW": "PDF 報告中的理想氣體驗證圖、標準模擬分布圖和歷史圖統一使用圖內白底圖例，樣本數、選中區間、分箱數量等讀數移到圖外資訊帶，減少遮擋主要資料。",
+                "en": "Ideal-gas verification figures, standard distribution figures, and history figures in PDF reports now use consistent in-plot white legends, while samples, fit windows, and bin counts move to metadata bands outside the plot area."
+              }
+            },
+            {
+              "scope": "legend-layout",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "软件内结果图图例自动收紧宽度",
+                "zh-TW": "軟體內結果圖圖例自動收緊寬度",
+                "en": "In-app result legends now use compact dynamic widths"
+              },
+              "body": {
+                "zh-CN": "软件内结果图的图例会根据文字长度自动计算白底框宽度，并缩小符号、文字和边框间距，减少图例右侧留白和对半对数数据点的遮挡。",
+                "zh-TW": "軟體內結果圖的圖例會根據文字長度自動計算白底框寬度，並縮小符號、文字和邊框間距，減少圖例右側留白和對半對數資料點的遮擋。",
+                "en": "In-app result legends now calculate white-panel width from label length and use tighter marker, text, and panel spacing, reducing right-side whitespace and overlap with semi-log data points."
+              }
+            }
+          ]
+        },
+        {
+          "type": "fixed",
+          "title": {
+            "zh-CN": "修复",
+            "zh-TW": "修復",
+            "en": "Fixed"
+          },
+          "items": [
+            {
+              "scope": "semilog-export-data",
+              "importance": "high",
+              "title": {
+                "zh-CN": "半对数导出保留极小正理论值",
+                "zh-TW": "半對數匯出保留極小正理論值",
+                "en": "Semi-log exports keep tiny positive theory values"
+              },
+              "body": {
+                "zh-CN": "标准模拟半对数能量导出不再把极小正理论概率压到固定地板值，而是保留完整对数尺度，避免尾部理论线被错误拉平。",
+                "zh-TW": "標準模擬半對數能量匯出不再把極小正理論機率壓到固定地板值，而是保留完整對數尺度，避免尾部理論線被錯誤拉平。",
+                "en": "Standard semi-log energy exports no longer clamp tiny positive theoretical probabilities to a fixed floor, preserving the log scale and avoiding an artificially flattened theory tail."
+              }
+            }
+          ]
+        }
+      ],
+      "knownIssues": []
+    },
+    {
+      "version": "4.1.21",
+      "date": "2026-06-18",
+      "channel": "stable",
+      "download": {
+        "releasePage": "https://github.com/WangJN-ing/hard-sphere-lab-release/releases/tag/v4.1.21",
+        "windowsInstaller": "https://github.com/WangJN-ing/hard-sphere-lab-release/releases/download/v4.1.21/heat-capacity-lab-setup-4.1.21.exe"
+      },
+      "summary": {
+        "zh-CN": "完善标准模拟导出报告的半对数能量图说明：图内会明确标出实际绘制箱数、省略箱数和概率截断阈值，并修复导出样例生成器与真实运行数据不一致的问题。",
+        "zh-TW": "完善標準模擬匯出報告的半對數能量圖說明：圖內會明確標出實際繪製箱數、省略箱數和機率截斷閾值，並修復匯出範例產生器與真實執行資料不一致的問題。",
+        "en": "Improves the standard simulation semi-log energy export: figures now show plotted bins, omitted bins, and the probability cutoff, and the sample payload generator now matches real runtime data."
+      },
+      "sections": [
+        {
+          "type": "changed",
+          "title": {
+            "zh-CN": "改进",
+            "zh-TW": "改進",
+            "en": "Changed"
+          },
+          "items": [
+            {
+              "scope": "standard-export",
+              "importance": "high",
+              "title": {
+                "zh-CN": "半对数能量图明确显示省略箱信息",
+                "zh-TW": "半對數能量圖明確顯示省略箱資訊",
+                "en": "Semi-log energy figures now explain omitted bins"
+              },
+              "body": {
+                "zh-CN": "标准模拟的半对数能量图会继续避免绘制 log(0) 或极低概率箱，但现在读数面板会显示实际绘制箱数、总能量箱数、省略箱数和 p<=0.001 的截断条件，避免误以为图表缺失数据。理论线也改为基于完整能量箱绘制。",
+                "zh-TW": "標準模擬的半對數能量圖會繼續避免繪製 log(0) 或極低機率箱，但現在讀數面板會顯示實際繪製箱數、總能量箱數、省略箱數和 p<=0.001 的截斷條件，避免誤以為圖表缺失資料。理論線也改為基於完整能量箱繪製。",
+                "en": "The standard semi-log energy figure still omits log(0) and very low-probability bins, but its readout now lists plotted bins, total energy bins, omitted bins, and the p<=0.001 cutoff. The theory curve is drawn from the complete energy-bin reference."
+              }
+            },
+            {
+              "scope": "exporter-samples",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "导出样例生成器与真实运行数据保持一致",
+                "zh-TW": "匯出範例產生器與真實執行資料保持一致",
+                "en": "Sample export payloads now match runtime data"
+              },
+              "body": {
+                "zh-CN": "修正样例生成脚本的旧导入路径，并将标准模拟 energyLog 样例改为真实运行时使用的 energy、logProb、theoreticalLog 字段和自然对数尺度，避免后续验收样例掩盖真实导出问题。",
+                "zh-TW": "修正範例產生腳本的舊匯入路徑，並將標準模擬 energyLog 範例改為真實執行時使用的 energy、logProb、theoreticalLog 欄位和自然對數尺度，避免後續驗收範例掩蓋真實匯出問題。",
+                "en": "The sample payload generator now imports from the current workbench source tree and emits standard energyLog rows with energy, logProb, and theoreticalLog on the natural-log scale, matching runtime exports."
+              }
+            }
+          ]
+        }
+      ],
+      "knownIssues": []
+    },
+    {
+      "version": "4.1.20",
+      "date": "2026-06-18",
+      "channel": "stable",
+      "download": {
+        "releasePage": "https://github.com/WangJN-ing/hard-sphere-lab-release/releases/tag/v4.1.20",
+        "windowsInstaller": "https://github.com/WangJN-ing/hard-sphere-lab-release/releases/download/v4.1.20/heat-capacity-lab-setup-4.1.20.exe"
+      },
+      "summary": {
+        "zh-CN": "修复标准模拟导出报告中“半对数能量分布”图为空的问题。导出器现在正确读取真实实验数据中的 energy、logProb 和 theoreticalLog 字段，避免半对数图被压缩到 0 附近。",
+        "zh-TW": "修復標準模擬匯出報告中「半對數能量分佈」圖為空的問題。匯出器現在正確讀取真實實驗資料中的 energy、logProb 和 theoreticalLog 欄位，避免半對數圖被壓縮到 0 附近。",
+        "en": "Fixes the blank semi-log energy distribution figure in standard simulation export reports. The exporter now reads the real experiment fields energy, logProb, and theoreticalLog instead of collapsing the chart near zero."
+      },
+      "sections": [
+        {
+          "type": "fixed",
+          "title": {
+            "zh-CN": "修复",
+            "zh-TW": "修復",
+            "en": "Fixed"
+          },
+          "items": [
+            {
+              "scope": "standard-export",
+              "importance": "high",
+              "title": {
+                "zh-CN": "标准模拟半对数能量图不再空白",
+                "zh-TW": "標準模擬半對數能量圖不再空白",
+                "en": "Standard semi-log energy export no longer renders blank"
+              },
+              "body": {
+                "zh-CN": "标准模拟运行时输出的半对数能量数据使用 energy、logProb、theoreticalLog 字段；4.1.19 的新图表导出器误按普通直方图字段读取，导致坐标轴和数据都退到 0 附近。本版本补上专用解析并保留旧直方图字段兼容。",
+                "zh-TW": "標準模擬執行時輸出的半對數能量資料使用 energy、logProb、theoreticalLog 欄位；4.1.19 的新圖表匯出器誤按普通直方圖欄位讀取，導致座標軸和資料都退到 0 附近。本版本補上專用解析並保留舊直方圖欄位相容。",
+                "en": "Runtime standard simulations emit semi-log energy data as energy, logProb, and theoreticalLog. The 4.1.19 graph exporter read those rows as ordinary histogram bins, collapsing the chart near zero. This version adds the dedicated parser while keeping legacy histogram-shaped rows compatible."
+              }
+            }
+          ]
+        }
+      ],
+      "knownIssues": []
+    },
+    {
+      "version": "4.1.19",
+      "date": "2026-06-17",
+      "channel": "stable",
+      "download": {
+        "releasePage": "https://github.com/WangJN-ing/hard-sphere-lab-release/releases/tag/v4.1.19",
+        "windowsInstaller": "https://github.com/WangJN-ing/hard-sphere-lab-release/releases/download/v4.1.19/heat-capacity-lab-setup-4.1.19.exe"
+      },
+      "summary": {
+        "zh-CN": "导出图表升级为正式专业实验图样式：标准模拟和理想气体验证图统一使用 Times 字体、内向刻度、轻量网格和工程化读数框，并优化 PDF 报告中的图像排版。",
+        "zh-TW": "匯出圖表升級為正式專業實驗圖樣式：標準模擬和理想氣體驗證圖統一使用 Times 字體、向內刻度、輕量網格和工程化讀數框，並最佳化 PDF 報告中的圖像排版。",
+        "en": "Upgrades exported graphs to the formal professional lab style: standard simulation and ideal-gas verification figures now share Times typography, inward ticks, light grids, engineering readouts, and clearer PDF report figure layout."
+      },
+      "sections": [
+        {
+          "type": "changed",
+          "title": {
+            "zh-CN": "变更",
+            "zh-TW": "變更",
+            "en": "Changed"
+          },
+          "items": [
+            {
+              "scope": "export",
+              "importance": "high",
+              "title": {
+                "zh-CN": "正式导出图表升级为专业实验图样式",
+                "zh-TW": "正式匯出圖表升級為專業實驗圖樣式",
+                "en": "Professional lab graph style for formal exports"
+              },
+              "body": {
+                "zh-CN": "标准模拟的速度分布、能量分布、半对数能量、温度误差和总能量图，以及理想气体 P-T、P-V、P-N 验证图，现在统一使用新的正式绘图模块。",
+                "zh-TW": "標準模擬的速度分布、能量分布、半對數能量、溫度誤差和總能量圖，以及理想氣體 P-T、P-V、P-N 驗證圖，現在統一使用新的正式繪圖模組。",
+                "en": "Speed, energy, semi-log energy, temperature-error, and total-energy figures for standard simulation, plus P-T, P-V, and P-N ideal-gas verification figures, now use the new formal plotting module."
+              }
+            },
+            {
+              "scope": "report",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "PDF 报告图像改为更清晰的大图排版",
+                "zh-TW": "PDF 報告圖像改為更清晰的大圖排版",
+                "en": "Clearer large-figure layout in PDF reports"
+              },
+              "body": {
+                "zh-CN": "报告中的图表不再压成双列缩略图，而是以单列大图呈现，提升坐标轴、图例和读数框的可读性。缺失目标温度时也不再显示无意义的占位读数。",
+                "zh-TW": "報告中的圖表不再壓成雙欄縮圖，而是以單欄大圖呈現，提升座標軸、圖例和讀數框的可讀性。缺少目標溫度時也不再顯示無意義的佔位讀數。",
+                "en": "Report graphs are no longer compressed into two-column thumbnails; they render as larger single-column figures for better axis, legend, and readout legibility. Missing target-temperature values are omitted instead of shown as placeholders."
+              }
+            }
+          ]
+        },
+        {
+          "type": "fixed",
+          "title": {
+            "zh-CN": "修复",
+            "zh-TW": "修復",
+            "en": "Fixed"
+          },
+          "items": [
+            {
+              "scope": "desktop-update",
+              "importance": "high",
+              "title": {
+                "zh-CN": "4.1.19 桌面更新资产完整发布",
+                "zh-TW": "4.1.19 桌面更新資產完整發布",
+                "en": "Complete 4.1.19 desktop update assets"
+              },
+              "body": {
+                "zh-CN": "本版本发布 Windows 安装包、latest.yml 和 blockmap，已安装 4.1.18 的本地客户端可以通过软件内更新检测到 4.1.19。",
+                "zh-TW": "本版本發布 Windows 安裝包、latest.yml 和 blockmap，已安裝 4.1.18 的本機客戶端可以透過軟體內更新偵測到 4.1.19。",
+                "en": "This release publishes the Windows installer, latest.yml, and blockmap so installed 4.1.18 clients can detect 4.1.19 through the in-app updater."
+              }
+            }
+          ]
+        }
+      ],
+      "knownIssues": []
+    },
+    {
+      "version": "4.1.18",
+      "date": "2026-06-13",
+      "channel": "stable",
+      "download": {
+        "releasePage": "https://github.com/WangJN-ing/hard-sphere-lab-release/releases/tag/v4.1.18",
+        "windowsInstaller": "https://github.com/WangJN-ing/hard-sphere-lab-release/releases/download/v4.1.18/heat-capacity-lab-setup-4.1.18.exe"
+      },
+      "summary": {
+        "zh-CN": "完善理想气体和标准模拟的实验导出、多语言与菜单交互：新增总导出入口，区分报告 PDF 和图像文件夹导出，补齐控制台及实验专属界面的简体中文、繁体中文和英文文案，并修复顶部二级菜单固定后与新悬浮菜单重叠的问题。",
+        "zh-TW": "完善理想氣體和標準模擬的實驗匯出、多語言與選單互動：新增總匯出入口，區分報告 PDF 和圖像資料夾匯出，補齊控制台及實驗專屬介面的簡體中文、繁體中文和英文文案，並修復頂部二級選單固定後與新懸浮選單重疊的問題。",
+        "en": "Improves ideal-gas and standard-simulation export, localization, and menu behavior: adds a complete export entry, separates report PDF output from image-folder output, localizes console and experiment-specific UI copy across Simplified Chinese, Traditional Chinese, and English, and prevents pinned top submenus from overlapping newly hovered submenus."
+      },
+      "sections": [
+        {
+          "type": "added",
+          "title": {
+            "zh-CN": "新增",
+            "zh-TW": "新增",
+            "en": "Added"
+          },
+          "items": [
+            {
+              "scope": "export",
+              "importance": "high",
+              "title": {
+                "zh-CN": "理想气体和标准模拟新增总导出",
+                "zh-TW": "理想氣體和標準模擬新增總匯出",
+                "en": "Complete export for ideal and standard experiments"
+              },
+              "body": {
+                "zh-CN": "在报告 PDF 左侧加入样式一致的总导出按钮，用于把当前实验模式最近一次实验可导出的报告、数据与图像统一放入一个导出文件夹。",
+                "zh-TW": "在報告 PDF 左側加入樣式一致的總匯出按鈕，用於把目前實驗模式最近一次實驗可匯出的報告、資料與圖像統一放入一個匯出資料夾。",
+                "en": "Adds a matching complete-export button beside Report PDF, bundling the latest run's available report, data, and figures into one export folder."
+              }
+            },
+            {
+              "scope": "localization",
+              "importance": "high",
+              "title": {
+                "zh-CN": "补齐理想气体和标准模拟多语言",
+                "zh-TW": "補齊理想氣體和標準模擬多語言",
+                "en": "Localization coverage for ideal and standard experiments"
+              },
+              "body": {
+                "zh-CN": "控制台日志、参数校验、扫描输入错误、运行状态、结果图像列表和实验专属按钮现在都跟随简体中文、繁体中文和英文设置切换。",
+                "zh-TW": "控制台日誌、參數校驗、掃描輸入錯誤、執行狀態、結果圖像列表和實驗專屬按鈕現在都會跟隨簡體中文、繁體中文和英文設定切換。",
+                "en": "Console logs, parameter validation, scan-input errors, run states, result figure lists, and experiment-specific buttons now follow Simplified Chinese, Traditional Chinese, and English settings."
+              }
+            }
+          ]
+        },
+        {
+          "type": "changed",
+          "title": {
+            "zh-CN": "变更",
+            "zh-TW": "變更",
+            "en": "Changed"
+          },
+          "items": [
+            {
+              "scope": "export",
+              "importance": "high",
+              "title": {
+                "zh-CN": "报告 PDF 与图像导出彻底分离",
+                "zh-TW": "報告 PDF 與圖像匯出徹底分離",
+                "en": "Report PDFs and figure exports are separated"
+              },
+              "body": {
+                "zh-CN": "报告 PDF 按钮现在直接导出单个 PDF；导出图像按钮只生成图像文件夹，文件夹内按内容分组存放图像，不再同时混出 PDF 和图像。",
+                "zh-TW": "報告 PDF 按鈕現在直接匯出單一 PDF；匯出圖像按鈕只產生圖像資料夾，資料夾內按內容分組存放圖像，不再同時混出 PDF 和圖像。",
+                "en": "Report PDF now exports a single PDF directly, while Export Figures produces only grouped image folders instead of mixing PDFs and images in both actions."
+              }
+            },
+            {
+              "scope": "ui",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "顶部二级菜单固定逻辑更清晰",
+                "zh-TW": "頂部二級選單固定邏輯更清晰",
+                "en": "Clearer pinned top-submenu behavior"
+              },
+              "body": {
+                "zh-CN": "点击固定某个二级菜单后，鼠标移到普通区域仍保持固定；但当悬浮到另一个可展开菜单时，会先收起旧菜单，再显示新的悬浮菜单，避免两层菜单重叠。",
+                "zh-TW": "點擊固定某個二級選單後，滑鼠移到普通區域仍保持固定；但當懸浮到另一個可展開選單時，會先收起舊選單，再顯示新的懸浮選單，避免兩層選單重疊。",
+                "en": "Pinned submenus remain open over neutral areas, but hovering another expandable menu now closes the pinned submenu before showing the new hover submenu."
+              }
+            }
+          ]
+        },
+        {
+          "type": "fixed",
+          "title": {
+            "zh-CN": "修复",
+            "zh-TW": "修復",
+            "en": "Fixed"
+          },
+          "items": [
+            {
+              "scope": "localization",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "控制台不再只显示英文实验提示",
+                "zh-TW": "控制台不再只顯示英文實驗提示",
+                "en": "Console experiment hints no longer stay English-only"
+              },
+              "body": {
+                "zh-CN": "理想气体和标准模拟的开始、暂停、终止、重置、参数应用、受控变量锁定和导出状态提示都改为从当前语言文案表读取。",
+                "zh-TW": "理想氣體和標準模擬的開始、暫停、終止、重置、參數套用、受控變量鎖定和匯出狀態提示都改為從目前語言文案表讀取。",
+                "en": "Start, pause, terminate, reset, parameter-apply, controlled-variable lock, and export-status messages for ideal and standard experiments now read from the active language copy table."
+              }
+            },
+            {
+              "scope": "ui",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "标准模拟结果图像列表移除英文硬编码",
+                "zh-TW": "標準模擬結果圖像列表移除英文硬編碼",
+                "en": "Standard result figure list no longer has hardcoded English"
+              },
+              "body": {
+                "zh-CN": "结果图像列表标题、说明和状态现在使用现有结果文案，避免中文界面中出现 Figure data 等英文残留。",
+                "zh-TW": "結果圖像列表標題、說明和狀態現在使用既有結果文案，避免中文介面中出現 Figure data 等英文殘留。",
+                "en": "Figure-list titles, hints, and status labels now use the localized results copy instead of hardcoded strings such as Figure data."
+              }
+            }
+          ]
+        },
+        {
+          "type": "compatibility",
+          "title": {
+            "zh-CN": "兼容性",
+            "zh-TW": "相容性",
+            "en": "Compatibility"
+          },
+          "items": [
+            {
+              "scope": "desktop-update",
+              "importance": "high",
+              "title": {
+                "zh-CN": "桌面自动更新资产完整",
+                "zh-TW": "桌面自動更新資產完整",
+                "en": "Desktop auto-update assets are complete"
+              },
+              "body": {
+                "zh-CN": "4.1.18 将发布 NSIS 安装包、latest.yml 和 blockmap，已安装桌面客户端可以通过应用内检查更新发现并下载。",
+                "zh-TW": "4.1.18 將發布 NSIS 安裝包、latest.yml 和 blockmap，已安裝桌面用戶端可以透過應用內檢查更新發現並下載。",
+                "en": "Version 4.1.18 publishes the NSIS installer, latest.yml, and blockmap so installed desktop clients can discover and download it in-app."
+              }
+            }
+          ]
+        }
+      ],
+      "knownIssues": []
+    },
+    {
+      "version": "4.1.17",
+      "date": "2026-06-13",
+      "channel": "stable",
+      "download": {
+        "releasePage": "https://github.com/WangJN-ing/hard-sphere-lab-release/releases/tag/v4.1.17",
+        "windowsInstaller": "https://github.com/WangJN-ing/hard-sphere-lab-release/releases/download/v4.1.17/heat-capacity-lab-setup-4.1.17.exe"
+      },
+      "summary": {
+        "zh-CN": "修正热容比 3D 聚焦模式的删除范围：恢复主机面板和打气球聚焦视角，只移除玻璃旋塞与打气阀门共用的聚焦视角及其悬浮入口、状态面板和小仪表；同时保留 Ultra GLB 玻璃旋塞拨杆命中优化和更新下载过程中的结构化更新说明。",
+        "zh-TW": "修正熱容比 3D 聚焦模式的刪除範圍：恢復主機面板和打氣球聚焦視角，只移除玻璃旋塞與打氣閥門共用的聚焦視角及其懸浮入口、狀態面板和小儀表；同時保留 Ultra GLB 玻璃旋塞撥桿命中最佳化和更新下載過程中的結構化更新說明。",
+        "en": "Corrects the heat-capacity 3D focus-mode removal scope: instrument-panel and pump-bulb focus views are restored, while only the shared glass-stopcock and pump-valve focus view, hover entry, status panel, and mini readout are removed. Ultra GLB stopcock lever hit testing and structured release notes during download are preserved."
+      },
+      "sections": [
+        {
+          "type": "fixed",
+          "title": {
+            "zh-CN": "修复",
+            "zh-TW": "修復",
+            "en": "Fixed"
+          },
+          "items": [
+            {
+              "scope": "ui",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "恢复主机面板聚焦",
+                "zh-TW": "恢復主機面板聚焦",
+                "en": "Instrument-panel focus restored"
+              },
+              "body": {
+                "zh-CN": "电源开关、压强调零和主机面板相关的双击聚焦、固定视角和状态面板恢复为原有行为，不再因移除阀门聚焦而被误删。",
+                "zh-TW": "電源開關、壓強調零和主機面板相關的雙擊聚焦、固定視角和狀態面板恢復為原有行為，不再因移除閥門聚焦而被誤刪。",
+                "en": "Double-click focus, fixed camera framing, and status-panel behavior for the power switch, pressure-zero control, and instrument panel are restored to the original interaction."
+              }
+            },
+            {
+              "scope": "heat-capacity",
+              "importance": "high",
+              "title": {
+                "zh-CN": "恢复打气球聚焦",
+                "zh-TW": "恢復打氣球聚焦",
+                "en": "Pump-bulb focus restored"
+              },
+              "body": {
+                "zh-CN": "打气球的双击进入聚焦、固定视角、状态面板和聚焦状态下的打气操作恢复，骨架模型和 Ultra GLB 模型保持一致。",
+                "zh-TW": "打氣球的雙擊進入聚焦、固定視角、狀態面板和聚焦狀態下的打氣操作恢復，骨架模型和 Ultra GLB 模型保持一致。",
+                "en": "Pump-bulb double-click focus, fixed camera framing, status panel, and focused pumping interaction are restored consistently for both procedural and Ultra GLB models."
+              }
+            },
+            {
+              "scope": "desktop-update",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "更新说明下载中保持结构化排版",
+                "zh-TW": "更新說明下載中保持結構化排版",
+                "en": "Structured release notes remain during downloads"
+              },
+              "body": {
+                "zh-CN": "点击立即更新后，下载中、重试、失败和下载完成状态都会继续保留已获取的分组更新说明，不再退化为纯文本显示。",
+                "zh-TW": "點擊立即更新後，下載中、重試、失敗和下載完成狀態都會繼續保留已取得的分組更新說明，不再退化為純文字顯示。",
+                "en": "After starting an update, downloading, retrying, failed, and downloaded states keep the structured grouped release notes instead of falling back to plain text."
+              }
+            }
+          ]
+        },
+        {
+          "type": "changed",
+          "title": {
+            "zh-CN": "变更",
+            "zh-TW": "變更",
+            "en": "Changed"
+          },
+          "items": [
+            {
+              "scope": "heat-capacity",
+              "importance": "high",
+              "title": {
+                "zh-CN": "仅移除阀门共用聚焦视角",
+                "zh-TW": "僅移除閥門共用聚焦視角",
+                "en": "Only the shared valve focus view is removed"
+              },
+              "body": {
+                "zh-CN": "删除玻璃旋塞与打气阀门共用的悬浮进入按钮、固定聚焦视角、状态面板和小仪表；玻璃旋塞与打气阀门仍可在普通 3D 视图中直接点击开关。",
+                "zh-TW": "刪除玻璃旋塞與打氣閥門共用的懸浮進入按鈕、固定聚焦視角、狀態面板和小儀表；玻璃旋塞與打氣閥門仍可在普通 3D 視圖中直接點擊開關。",
+                "en": "The shared hover entry, fixed focus camera, status panel, and mini readout for the glass stopcock and pump valve are removed; both controls still toggle directly in the normal 3D view."
+              }
+            },
+            {
+              "scope": "heat-capacity",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "保留玻璃旋塞拨杆命中范围",
+                "zh-TW": "保留玻璃旋塞撥桿命中範圍",
+                "en": "Glass-stopcock lever hit target preserved"
+              },
+              "body": {
+                "zh-CN": "普通骨架模型和 Ultra GLB 模型仍将玻璃旋塞外侧拨杆纳入悬浮与点击命中区域，避免鼠标放在拨杆上方没有反应。",
+                "zh-TW": "普通骨架模型和 Ultra GLB 模型仍將玻璃旋塞外側撥桿納入懸浮與點擊命中區域，避免滑鼠放在撥桿上方沒有反應。",
+                "en": "Both the procedural and Ultra GLB models keep the outer stopcock lever inside the hover and click hit target, so the lever remains responsive."
+              }
+            }
+          ]
+        },
+        {
+          "type": "compatibility",
+          "title": {
+            "zh-CN": "兼容性",
+            "zh-TW": "相容性",
+            "en": "Compatibility"
+          },
+          "items": [
+            {
+              "scope": "desktop-update",
+              "importance": "high",
+              "title": {
+                "zh-CN": "桌面自动更新资产完整",
+                "zh-TW": "桌面自動更新資產完整",
+                "en": "Desktop auto-update assets are complete"
+              },
+              "body": {
+                "zh-CN": "4.1.17 发布 NSIS 安装包、latest.yml 和 blockmap，已安装的桌面客户端可通过应用内检查更新发现并下载安装。",
+                "zh-TW": "4.1.17 發布 NSIS 安裝包、latest.yml 和 blockmap，已安裝的桌面用戶端可透過應用程式內檢查更新發現並下載安裝。",
+                "en": "Version 4.1.17 ships the NSIS installer, latest.yml, and blockmap so installed desktop clients can discover and install it through the in-app updater."
+              }
+            }
+          ]
+        }
+      ],
+      "knownIssues": []
+    },
+    {
+      "version": "4.1.16",
+      "date": "2026-06-13",
+      "channel": "stable",
+      "download": {
+        "releasePage": "https://github.com/WangJN-ing/hard-sphere-lab-release/releases/tag/v4.1.16",
+        "windowsInstaller": "https://github.com/WangJN-ing/hard-sphere-lab-release/releases/download/v4.1.16/heat-capacity-lab-setup-4.1.16.exe"
+      },
+      "summary": {
+        "zh-CN": "继续打磨热容比最高画质模型与桌面更新体验：加入 Ultra 阀门状态指示，优化玻璃旋塞与阀门命中、默认视角和拖拽保护，移除旧的 3D 聚焦模式，并确保下载更新过程中结构化更新说明不会退化为纯文本。",
+        "zh-TW": "持續打磨熱容比最高畫質模型與桌面更新體驗：加入 Ultra 閥門狀態指示，優化玻璃旋塞與閥門命中、預設視角和拖曳保護，移除舊的 3D 聚焦模式，並確保下載更新過程中結構化更新說明不會退化為純文字。",
+        "en": "Continues polishing the high-quality heat-capacity model and desktop update flow: adds Ultra valve state indication, improves stopcock and valve hit targets, default camera framing, and drag protection, removes the old 3D focus modes, and keeps structured release notes intact while updates download."
+      },
+      "sections": [
+        {
+          "type": "added",
+          "title": {
+            "zh-CN": "新增",
+            "zh-TW": "新增",
+            "en": "Added"
+          },
+          "items": [
+            {
+              "scope": "heat-capacity",
+              "importance": "high",
+              "title": {
+                "zh-CN": "Ultra GLB 阀门状态指示",
+                "zh-TW": "Ultra GLB 閥門狀態指示",
+                "en": "Ultra GLB valve state indication"
+              },
+              "body": {
+                "zh-CN": "最高画质热容比模型加入阀门状态反馈，让玻璃旋塞、打气阀门和相关高亮状态更容易在 3D 视图中判断。",
+                "zh-TW": "最高畫質熱容比模型加入閥門狀態回饋，讓玻璃旋塞、打氣閥門和相關高亮狀態更容易在 3D 視圖中判斷。",
+                "en": "The highest-quality heat-capacity model now gives clearer valve state feedback so the glass stopcock, pump valve, and related highlights are easier to read in the 3D view."
+              }
+            }
+          ]
+        },
+        {
+          "type": "changed",
+          "title": {
+            "zh-CN": "变更",
+            "zh-TW": "變更",
+            "en": "Changed"
+          },
+          "items": [
+            {
+              "scope": "ui",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "移除热容比 3D 聚焦模式",
+                "zh-TW": "移除熱容比 3D 聚焦模式",
+                "en": "Removed heat-capacity 3D focus modes"
+              },
+              "body": {
+                "zh-CN": "删除小仪表、聚焦状态面板、固定聚焦视角、悬浮进入按钮和双击进入聚焦入口，3D 视图改为在普通操作状态下直接点击高亮部件。",
+                "zh-TW": "刪除小儀表、聚焦狀態面板、固定聚焦視角、懸浮進入按鈕和雙擊進入聚焦入口，3D 視圖改為在普通操作狀態下直接點擊高亮部件。",
+                "en": "Removes the mini readout, focus status panels, fixed focus cameras, hover entry button, and double-click focus entry. Highlighted parts now operate directly in the normal 3D view."
+              }
+            },
+            {
+              "scope": "heat-capacity",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "优化 Ultra 默认视角与捕获视角",
+                "zh-TW": "優化 Ultra 預設視角與擷取視角",
+                "en": "Refined Ultra default and capture camera views"
+              },
+              "body": {
+                "zh-CN": "调整最高画质模型的默认相机和热容比相机捕获视图，让装置主体、容器、阀门和仪表在工作区中呈现更稳定。",
+                "zh-TW": "調整最高畫質模型的預設相機和熱容比相機擷取視圖，讓裝置主體、容器、閥門和儀表在工作區中呈現更穩定。",
+                "en": "Adjusts the high-quality model's default camera and heat-capacity capture view so the apparatus body, vessel, valves, and instrument frame more consistently in the workspace."
+              }
+            }
+          ]
+        },
+        {
+          "type": "fixed",
+          "title": {
+            "zh-CN": "修复",
+            "zh-TW": "修復",
+            "en": "Fixed"
+          },
+          "items": [
+            {
+              "scope": "desktop-update",
+              "importance": "high",
+              "title": {
+                "zh-CN": "下载更新时保留结构化更新说明",
+                "zh-TW": "下載更新時保留結構化更新說明",
+                "en": "Structured release notes stay intact during downloads"
+              },
+              "body": {
+                "zh-CN": "修复点击立即更新后，下载过程中更新说明从分组排版退化为纯文本的问题；下载中、重试、失败和下载完成状态都会保留已获取的结构化说明。",
+                "zh-TW": "修復點擊立即更新後，下載過程中更新說明從分組排版退化為純文字的問題；下載中、重試、失敗和下載完成狀態都會保留已取得的結構化說明。",
+                "en": "Fixes the update dialog falling back from grouped release-note layout to plain text after starting a download. Downloading, retrying, failed, and downloaded states now preserve the structured notes already discovered."
+              }
+            },
+            {
+              "scope": "heat-capacity",
+              "importance": "high",
+              "title": {
+                "zh-CN": "玻璃旋塞外侧拨杆纳入命中区域",
+                "zh-TW": "玻璃旋塞外側撥桿納入命中區域",
+                "en": "Glass stopcock outer lever included in hit testing"
+              },
+              "body": {
+                "zh-CN": "普通骨架模型和 Ultra GLB 模型都扩大了玻璃旋塞拨杆命中范围，悬停与单击开关不再只覆盖中间旋塞主体。",
+                "zh-TW": "普通骨架模型和 Ultra GLB 模型都擴大了玻璃旋塞撥桿命中範圍，懸停與單擊開關不再只覆蓋中間旋塞主體。",
+                "en": "Both the procedural and Ultra GLB models expand the glass stopcock lever hit target so hovering and clicking are no longer limited to the central stopcock body."
+              }
+            },
+            {
+              "scope": "ui",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "拖拽模型后避免误触控制件",
+                "zh-TW": "拖曳模型後避免誤觸控制件",
+                "en": "Drag gestures no longer trigger controls by accident"
+              },
+              "body": {
+                "zh-CN": "3D 视图在旋转或平移模型后会吞掉由拖拽产生的尾随点击，减少拖动视角时误触电源、阀门或打气球的情况。",
+                "zh-TW": "3D 視圖在旋轉或平移模型後會吞掉由拖曳產生的尾隨點擊，減少拖動視角時誤觸電源、閥門或打氣球的情況。",
+                "en": "The 3D view now suppresses trailing clicks generated by rotate or pan gestures, reducing accidental power, valve, or pump-bulb activation while moving the camera."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "4.1.15",
+      "date": "2026-06-12",
+      "channel": "stable",
+      "download": {
+        "releasePage": "https://github.com/WangJN-ing/hard-sphere-lab-release/releases/tag/v4.1.15",
+        "windowsInstaller": "https://github.com/WangJN-ing/hard-sphere-lab-release/releases/download/v4.1.15/heat-capacity-lab-setup-4.1.15.exe"
+      },
+      "summary": {
+        "zh-CN": "完成热容比微观可视化重构：骨架模型改用独立硬球碰撞模块，Ultra GLB 接入圆柱容器分子运动，并同步修正打气、放气、温度映射、旋塞判定和可视化开关。",
+        "zh-TW": "完成熱容比微觀可視化重構：骨架模型改用獨立硬球碰撞模組，Ultra GLB 接入圓柱容器分子運動，並同步修正打氣、放氣、溫度映射、旋塞判定和可視化開關。",
+        "en": "Rebuilds heat-capacity molecule visualization with an independent hard-sphere collision module, adds Ultra GLB cylinder particles, and aligns pumping, release, temperature mapping, stopcock state, and visualization toggles."
+      },
+      "sections": [
+        {
+          "type": "added",
+          "title": {
+            "zh-CN": "新增",
+            "zh-TW": "新增",
+            "en": "Added"
+          },
+          "items": [
+            {
+              "scope": "heat-capacity",
+              "importance": "high",
+              "title": {
+                "zh-CN": "独立硬球碰撞可视化模块",
+                "zh-TW": "獨立硬球碰撞可視化模組",
+                "en": "Independent hard-sphere visualization module"
+              },
+              "body": {
+                "zh-CN": "热容比微观可视化现在使用独立的纯计算模块，支持固定时间步、分子间碰撞、无重叠生成、容器壁反弹、温度驱动速度和颜色映射，并保留按性能档调节粒子数量和速度。",
+                "zh-TW": "熱容比微觀可視化現在使用獨立的純計算模組，支援固定時間步、分子間碰撞、無重疊生成、容器壁反彈、溫度驅動速度和顏色映射，並保留按效能檔調節粒子數量和速度。",
+                "en": "Heat-capacity molecule visualization now uses a pure simulation module with fixed timesteps, particle collisions, non-overlap spawning, wall bounces, temperature-driven speed and color mapping, and performance-tier count/speed presets."
+              }
+            },
+            {
+              "scope": "heat-capacity",
+              "importance": "high",
+              "title": {
+                "zh-CN": "Ultra GLB 圆柱容器分子运动",
+                "zh-TW": "Ultra GLB 圓柱容器分子運動",
+                "en": "Ultra GLB cylinder molecule motion"
+              },
+              "body": {
+                "zh-CN": "最高画质模型现在使用按 GLB 玻璃容器测量的圆柱空气墙，粒子位置、半径、数量和入口都单独适配 Ultra 模型，避免旧正方体可视化穿出容器或落到平面下方。",
+                "zh-TW": "最高畫質模型現在使用按 GLB 玻璃容器測量的圓柱空氣牆，粒子位置、半徑、數量和入口都單獨適配 Ultra 模型，避免舊正方體可視化穿出容器或落到平面下方。",
+                "en": "The highest-quality model now uses a measured GLB cylinder air wall, with Ultra-specific particle position, radius, count, and inlet alignment so particles no longer use the old cube volume or fall outside the vessel."
+              }
+            }
+          ]
+        },
+        {
+          "type": "changed",
+          "title": {
+            "zh-CN": "变更",
+            "zh-TW": "變更",
+            "en": "Changed"
+          },
+          "items": [
+            {
+              "scope": "heat-capacity",
+              "importance": "high",
+              "title": {
+                "zh-CN": "打气与放气动画改为实验量驱动",
+                "zh-TW": "打氣與放氣動畫改為實驗量驅動",
+                "en": "Pumping and release visuals are driven by experiment quantities"
+              },
+              "body": {
+                "zh-CN": "打气时粒子从阀门入口喷入，放气时按视觉时间线分为快速释放和后续缓慢交换，粒子减少量相对打入气体计算，避免直接刷新、凭空补粒子或把瓶内粒子减到不符合物理含义。",
+                "zh-TW": "打氣時粒子從閥門入口噴入，放氣時按視覺時間線分為快速釋放和後續緩慢交換，粒子減少量相對打入氣體計算，避免直接刷新、憑空補粒子或把瓶內粒子減到不符合物理含義。",
+                "en": "Pumping injects particles from the valve inlet, while release uses a visual timeline with a fast initial outflow and slower post-exchange. Particle loss is calculated against added gas, avoiding visible respawns, artificial replenishment, or unphysical depletion."
+              }
+            },
+            {
+              "scope": "heat-capacity",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "温度颜色和分子速度过渡更连续",
+                "zh-TW": "溫度顏色和分子速度過渡更連續",
+                "en": "Temperature color and molecular speed transitions are smoother"
+              },
+              "body": {
+                "zh-CN": "小球颜色不再随打气或放气突变，随机热运动速度也增加过渡缓冲，避免温度快速变化后未离开粒子突然变慢带来的卡顿感。",
+                "zh-TW": "小球顏色不再隨打氣或放氣突變，隨機熱運動速度也增加過渡緩衝，避免溫度快速變化後未離開粒子突然變慢帶來的卡頓感。",
+                "en": "Particle color no longer jumps after pumping or release, and random thermal speed now has a transition buffer so remaining particles do not abruptly slow down when the temperature drops."
+              }
+            },
+            {
+              "scope": "ui",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "可视化开关在 Ultra 中保持一致",
+                "zh-TW": "可視化開關在 Ultra 中保持一致",
+                "en": "Visualization toggles are consistent in Ultra"
+              },
+              "body": {
+                "zh-CN": "三维视图左上角开关和右侧自由模式参数里的微观可视化复选框都可以控制 Ultra 圆柱小球显示，不再沿用早期最高画质禁用方案。",
+                "zh-TW": "三維視圖左上角開關和右側自由模式參數裡的微觀可視化核取方塊都可以控制 Ultra 圓柱小球顯示，不再沿用早期最高畫質禁用方案。",
+                "en": "Both the 3D-view toggle and the Free Mode parameter checkbox can control Ultra cylinder particles, removing the earlier highest-tier disabled path."
+              }
+            }
+          ]
+        },
+        {
+          "type": "fixed",
+          "title": {
+            "zh-CN": "修复",
+            "zh-TW": "修復",
+            "en": "Fixed"
+          },
+          "items": [
+            {
+              "scope": "heat-capacity",
+              "importance": "high",
+              "title": {
+                "zh-CN": "玻璃旋塞联通状态按 90 度物理定义判定",
+                "zh-TW": "玻璃旋塞連通狀態按 90 度物理定義判定",
+                "en": "Glass stopcock flow uses the physical 90-degree definition"
+              },
+              "body": {
+                "zh-CN": "玻璃旋塞只有转到 90±5 度时才算联通，默认复位为关闭，并统一骨架和 Ultra 的手柄、内部气道、状态面板与硬球放气判定，旧保存状态仍会按开关字段迁移到正确角度。",
+                "zh-TW": "玻璃旋塞只有轉到 90±5 度時才算連通，預設復位為關閉，並統一骨架和 Ultra 的手柄、內部氣道、狀態面板與硬球放氣判定，舊保存狀態仍會按開關欄位遷移到正確角度。",
+                "en": "The glass stopcock is connected only at 90±5 degrees, resets closed by default, and aligns skeleton/Ultra handle direction, internal channel, status panels, and hard-sphere release checks. Legacy saved states still migrate to the correct angle from the open/closed field."
+              }
+            },
+            {
+              "scope": "performance",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "移除旧版释放路径和临时运动开关",
+                "zh-TW": "移除舊版釋放路徑和臨時運動開關",
+                "en": "Removed legacy release paths and temporary motion gates"
+              },
+              "body": {
+                "zh-CN": "清理了旧的压力速率放气选择、旧的可视化刷新逻辑、阶段性 motionMode / pump-only 开关和对应测试断言，当前硬球层只保留最终确认的完整打气、放气和碰撞实现。",
+                "zh-TW": "清理了舊的壓力速率放氣選擇、舊的可視化刷新邏輯、階段性 motionMode / pump-only 開關和對應測試斷言，當前硬球層只保留最終確認的完整打氣、放氣和碰撞實現。",
+                "en": "Removes old pressure-rate release selection, legacy visual refresh logic, temporary motionMode / pump-only gates, and their stale assertions. The hard-sphere layer now keeps only the confirmed pumping, release, and collision implementation."
+              }
+            }
+          ]
+        },
+        {
+          "type": "compatibility",
+          "title": {
+            "zh-CN": "兼容性说明",
+            "zh-TW": "相容性說明",
+            "en": "Compatibility"
+          },
+          "items": [
+            {
+              "scope": "desktop-update",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "通过桌面自动更新分发",
+                "zh-TW": "透過桌面自動更新分發",
+                "en": "Distributed through desktop auto update"
+              },
+              "body": {
+                "zh-CN": "本版本继续发布 NSIS 安装包、latest.yml 和 blockmap，已安装的 4.1.14 客户端可以通过应用内更新检测到 4.1.15。",
+                "zh-TW": "本版本繼續發布 NSIS 安裝包、latest.yml 和 blockmap，已安裝的 4.1.14 用戶端可以透過應用內更新偵測到 4.1.15。",
+                "en": "This version continues to publish the NSIS installer, latest.yml, and blockmap so installed 4.1.14 clients can detect 4.1.15 in-app."
+              }
+            }
+          ]
+        }
+      ],
+      "knownIssues": []
+    },
+    {
+      "version": "4.1.14",
+      "date": "2026-06-10",
+      "channel": "stable",
+      "download": {
+        "releasePage": "https://github.com/WangJN-ing/hard-sphere-lab-release/releases/tag/v4.1.14",
+        "windowsInstaller": "https://github.com/WangJN-ing/hard-sphere-lab-release/releases/download/v4.1.14/heat-capacity-lab-setup-4.1.14.exe"
+      },
+      "summary": {
+        "zh-CN": "修复桌面打包版 Ultra GLB 资源路径，确保最高画质在正式发布版中正确加载新模型并保持原有交互。",
+        "zh-TW": "修復桌面打包版 Ultra GLB 資源路徑，確保最高畫質在正式發布版中正確載入新模型並保持原有互動。",
+        "en": "Fixes the packaged desktop Ultra GLB asset path so the highest-quality tier loads the real model in the release build while keeping the existing interaction behavior."
+      },
+      "sections": [
+        {
+          "type": "fixed",
+          "title": {
+            "zh-CN": "修复",
+            "zh-TW": "修復",
+            "en": "Fixed"
+          },
+          "items": [
+            {
+              "scope": "heat-capacity",
+              "importance": "high",
+              "title": {
+                "zh-CN": "Ultra GLB 在桌面打包版中可正确加载",
+                "zh-TW": "Ultra GLB 在桌面打包版中可正確載入",
+                "en": "Ultra GLB loads correctly in the packaged desktop app"
+              },
+              "body": {
+                "zh-CN": "最高画质现在通过 Vite 的 BASE_URL 解析 Ultra GLB 资源，避免在 Electron 的 file:// 环境里把 /models/... 解析到磁盘根目录而回退成骨架模型。",
+                "zh-TW": "最高畫質現在透過 Vite 的 BASE_URL 解析 Ultra GLB 資源，避免在 Electron 的 file:// 環境裡把 /models/... 解析到磁碟根目錄而回退成骨架模型。",
+                "en": "The highest-quality tier now resolves the Ultra GLB asset through Vite BASE_URL, which prevents Electron file:// builds from mapping /models/... to the filesystem root and falling back to the procedural skeleton."
+              }
+            }
+          ]
+        },
+        {
+          "type": "compatibility",
+          "title": {
+            "zh-CN": "兼容性说明",
+            "zh-TW": "相容性說明",
+            "en": "Compatibility"
+          },
+          "items": [
+            {
+              "scope": "desktop-update",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "通过桌面自动更新分发",
+                "zh-TW": "透過桌面自動更新分發",
+                "en": "Distributed through desktop auto update"
+              },
+              "body": {
+                "zh-CN": "本版本继续发布 NSIS 安装包、latest.yml 和 blockmap，已安装的 4.1.13 客户端可以通过应用内更新检测到 4.1.14。",
+                "zh-TW": "本版本繼續發布 NSIS 安裝包、latest.yml 和 blockmap，已安裝的 4.1.13 用戶端可以透過應用內更新偵測到 4.1.14。",
+                "en": "This version continues to publish the NSIS installer, latest.yml, and blockmap so installed 4.1.13 clients can detect 4.1.14 in-app."
+              }
+            }
+          ]
+        }
+      ],
+      "knownIssues": []
+    },
+    {
+      "version": "4.1.13",
+      "date": "2026-06-09",
+      "channel": "stable",
+      "download": {
+        "releasePage": "https://github.com/WangJN-ing/hard-sphere-lab-release/releases/tag/v4.1.13",
+        "windowsInstaller": "https://github.com/WangJN-ing/hard-sphere-lab-release/releases/download/v4.1.13/heat-capacity-lab-setup-4.1.13.exe"
+      },
+      "summary": {
+        "zh-CN": "热容比实验接入新的 Ultra GLB 最高画质模型，统一自由 / 引导 / 演示 / 聚焦模式的交互和高亮逻辑，修复控件命中与快速点击问题，并在最高档禁用微观可视化。",
+        "zh-TW": "熱容比實驗接入新的 Ultra GLB 最高畫質模型，統一自由 / 引導 / 演示 / 聚焦模式的互動和高亮邏輯，修復控制項命中與快速點擊問題，並在最高檔禁用微觀可視化。",
+        "en": "Upgrades the heat-capacity experiment to the new Ultra GLB highest-quality model, aligns Free/Guide/Demo/Focus interactions and highlights, fixes control hit areas and rapid-click behavior, and disables molecule visualization in the highest tier."
+      },
+      "sections": [
+        {
+          "type": "changed",
+          "title": {
+            "zh-CN": "变更",
+            "zh-TW": "變更",
+            "en": "Changed"
+          },
+          "items": [
+            {
+              "scope": "heat-capacity",
+              "importance": "high",
+              "title": {
+                "zh-CN": "Ultra GLB 最高画质接入新模型",
+                "zh-TW": "Ultra GLB 最高畫質接入新模型",
+                "en": "Ultra GLB highest quality now uses the new model"
+              },
+              "body": {
+                "zh-CN": "最高画质现在切换到新的 GLB 结构，主机、玻璃旋塞、打气阀门、调零旋钮和聚焦视角继续保持与旧骨架一致的操作语义，同时把自由 / 引导 / 演示 / 聚焦模式的过渡和高亮反馈统一起来。",
+                "zh-TW": "最高畫質現在切換到新的 GLB 結構，主機、玻璃旋塞、打氣閥門、調零旋鈕和聚焦視角繼續保持與舊骨架一致的操作語義，同時把自由 / 引導 / 演示 / 聚焦模式的過渡和高亮回饋統一起來。",
+                "en": "The highest-quality tier now switches to the new GLB structure. The main unit, glass stopcock, pump valve, zero knob, and focus views keep the same control semantics as the procedural skeleton while the Free/Guide/Demo/Focus transitions and highlight feedback are aligned."
+              }
+            },
+            {
+              "scope": "ui",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "数字显示和脉冲视觉更自然",
+                "zh-TW": "數字顯示和脈衝視覺更自然",
+                "en": "More natural digital readouts and pulse visuals"
+              },
+              "body": {
+                "zh-CN": "数字读数、单位和按钮高亮重新整理为更清晰的像素分割和更适合亮暗主题的配色，蓝色脉冲与悬停反馈也不再显得像贴图。",
+                "zh-TW": "數字讀數、單位和按鈕高亮重新整理為更清晰的像素分割和更適合亮暗主題的配色，藍色脈衝與懸停回饋也不再顯得像貼圖。",
+                "en": "Digital readouts, units, and button highlighting were reorganized with clearer pixel-like segmentation and colors that fit light and dark themes better, so the blue pulse and hover feedback no longer feel like a flat sticker."
+              }
+            }
+          ]
+        },
+        {
+          "type": "fixed",
+          "title": {
+            "zh-CN": "修复",
+            "zh-TW": "修復",
+            "en": "Fixed"
+          },
+          "items": [
+            {
+              "scope": "heat-capacity",
+              "importance": "high",
+              "title": {
+                "zh-CN": "控件命中区域和快速点击逻辑稳定",
+                "zh-TW": "控制項命中區域和快速點擊邏輯穩定",
+                "en": "Control hit areas and rapid clicks are stable"
+              },
+              "body": {
+                "zh-CN": "修正电源开关、玻璃旋塞、打气阀门、调零旋钮和打气球等控件的命中区域重叠与打架问题，快速单击现在会按当前动画状态即时切换，避免上一层点击把后续操作盖住。",
+                "zh-TW": "修正電源開關、玻璃旋塞、打氣閥門、調零旋鈕和打氣球等控制項的命中區域重疊與打架問題，快速單擊現在會按當前動畫狀態即時切換，避免上一層點擊把後續操作蓋住。",
+                "en": "Fixes overlapping hit areas for the power switch, glass stopcock, pump valve, zero knob, and balloon controls. Rapid single clicks now switch from the current animation state immediately instead of letting an earlier click block the next action."
+              }
+            },
+            {
+              "scope": "heat-capacity",
+              "importance": "high",
+              "title": {
+                "zh-CN": "演示和引导结束后自动回到自由模式",
+                "zh-TW": "演示和引導結束後自動回到自由模式",
+                "en": "Demo and Guide end by returning to Free Mode"
+              },
+              "body": {
+                "zh-CN": "演示模式和引导模式终止后会自动回到自由模式，避免模式残留影响后续的自由操作和状态恢复。",
+                "zh-TW": "演示模式和引導模式終止後會自動回到自由模式，避免模式殘留影響後續的自由操作和狀態恢復。",
+                "en": "When Demo or Guide ends, the app now returns to Free Mode automatically so leftover mode state does not affect later free interaction or recovery."
+              }
+            },
+            {
+              "scope": "heat-capacity",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "最高画质下禁用微观可视化",
+                "zh-TW": "最高畫質下禁用微觀可視化",
+                "en": "Molecule visualization is disabled in the highest tier"
+              },
+              "body": {
+                "zh-CN": "最高档现在会把微观可视化按钮置灰并显示禁用符号，不再渲染固定正方体里的分子运动层。",
+                "zh-TW": "最高檔現在會把微觀可視化按鈕置灰並顯示禁用符號，不再渲染固定正方體裡的分子運動層。",
+                "en": "The highest tier now greys out the molecule-visualization switch, shows the disabled symbol, and stops rendering the particle motion layer inside the fixed cube."
+              }
+            }
+          ]
+        },
+        {
+          "type": "compatibility",
+          "title": {
+            "zh-CN": "兼容性说明",
+            "zh-TW": "相容性說明",
+            "en": "Compatibility"
+          },
+          "items": [
+            {
+              "scope": "desktop-update",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "通过桌面自动更新分发",
+                "zh-TW": "透過桌面自動更新分發",
+                "en": "Distributed through desktop auto update"
+              },
+              "body": {
+                "zh-CN": "本版本继续发布 NSIS 安装包、latest.yml 和 blockmap，已安装的 4.1.12 客户端可以通过应用内更新检测到 4.1.13。",
+                "zh-TW": "本版本繼續發布 NSIS 安裝包、latest.yml 和 blockmap，已安裝的 4.1.12 用戶端可以透過應用內更新偵測到 4.1.13。",
+                "en": "This version continues to publish the NSIS installer, latest.yml, and blockmap so installed 4.1.12 clients can detect 4.1.13 in-app."
+              }
+            }
+          ]
+        }
+      ],
+      "knownIssues": []
+    },
+    {
+      "version": "4.1.11",
+      "date": "2026-05-28",
+      "channel": "stable",
+      "download": {
+        "releasePage": "https://github.com/WangJN-ing/hard-sphere-lab-release/releases/tag/v4.1.11",
+        "windowsInstaller": "https://github.com/WangJN-ing/hard-sphere-lab-release/releases/download/v4.1.11/heat-capacity-lab-setup-4.1.11.exe"
+      },
+      "summary": {
+        "zh-CN": "缩短桌面标题栏最小化横杠长度，使其更接近 Windows 常见应用标题栏比例，并保持按钮中心线对齐。",
+        "zh-TW": "縮短桌面標題列最小化橫線長度，使其更接近 Windows 常見應用標題列比例，並保持按鈕中心線對齊。",
+        "en": "Shortens the desktop titlebar minimize line to better match common Windows app proportions while keeping the button centerline aligned."
+      },
+      "sections": [
+        {
+          "type": "fixed",
+          "title": {
+            "zh-CN": "修复",
+            "zh-TW": "修復",
+            "en": "Fixed"
+          },
+          "items": [
+            {
+              "scope": "desktop-chrome",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "最小化按钮横杠更接近系统标题栏比例",
+                "zh-TW": "最小化按鈕橫線更接近系統標題列比例",
+                "en": "Minimize button line better matches system titlebar proportions"
+              },
+              "body": {
+                "zh-CN": "桌面端自定义标题栏的最小化横杠已从偏长的显示缩短为更紧凑的 Windows 风格长度，同时保留居中对齐和原有点击行为。",
+                "zh-TW": "桌面端自訂標題列的最小化橫線已從偏長的顯示縮短為更緊湊的 Windows 風格長度，同時保留置中對齊和原有點擊行為。",
+                "en": "The desktop custom titlebar minimize line is now shorter and more compact in the Windows style, while preserving centered alignment and the existing click behavior."
+              }
+            }
+          ]
+        },
+        {
+          "type": "compatibility",
+          "title": {
+            "zh-CN": "兼容性说明",
+            "zh-TW": "相容性說明",
+            "en": "Compatibility"
+          },
+          "items": [
+            {
+              "scope": "desktop-update",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "通过桌面自动更新分发",
+                "zh-TW": "透過桌面自動更新分發",
+                "en": "Distributed through desktop auto update"
+              },
+              "body": {
+                "zh-CN": "本版本继续发布 NSIS 安装包、latest.yml 和 blockmap，已安装的 4.1.10 客户端可以通过应用内更新检测到 4.1.11。",
+                "zh-TW": "本版本繼續發布 NSIS 安裝包、latest.yml 和 blockmap，已安裝的 4.1.10 用戶端可以透過應用內更新偵測到 4.1.11。",
+                "en": "This version continues to publish the NSIS installer, latest.yml, and blockmap so installed 4.1.10 clients can detect 4.1.11 in-app."
+              }
+            }
+          ]
+        }
+      ],
+      "knownIssues": []
+    },
+    {
+      "version": "4.1.10",
+      "date": "2026-05-28",
+      "channel": "stable",
+      "download": {
+        "releasePage": "https://github.com/WangJN-ing/hard-sphere-lab-release/releases/tag/v4.1.10",
+        "windowsInstaller": "https://github.com/WangJN-ing/hard-sphere-lab-release/releases/download/v4.1.10/heat-capacity-lab-setup-4.1.10.exe"
+      },
+      "summary": {
+        "zh-CN": "修正应用内标题栏图标加载与圆角显示，隐藏 Web 端不应出现的桌面窗口按钮，并调整最小化、最大化和还原图标的 Windows 风格视觉对齐。",
+        "zh-TW": "修正應用內標題列圖示載入與圓角顯示，隱藏 Web 端不應出現的桌面視窗按鈕，並調整最小化、最大化和還原圖示的 Windows 風格視覺對齊。",
+        "en": "Fixes the in-app titlebar icon loading and rounding, hides desktop-only window controls on the web build, and refines the Windows-style minimize, maximize, and restore glyph alignment."
+      },
+      "sections": [
+        {
+          "type": "fixed",
+          "title": {
+            "zh-CN": "修复",
+            "zh-TW": "修復",
+            "en": "Fixed"
+          },
+          "items": [
+            {
+              "scope": "desktop-chrome",
+              "importance": "high",
+              "title": {
+                "zh-CN": "标题栏图标在桌面端正确显示",
+                "zh-TW": "標題列圖示在桌面端正確顯示",
+                "en": "Titlebar icon loads correctly on desktop"
+              },
+              "body": {
+                "zh-CN": "标题栏应用图标改用打包后可用的相对资源路径，并增加小圆角，避免显示为破损图片或生硬正方形。",
+                "zh-TW": "標題列應用圖示改用打包後可用的相對資源路徑，並增加小圓角，避免顯示為破損圖片或生硬正方形。",
+                "en": "The titlebar app icon now uses a packaged relative asset path and subtle rounded corners, avoiding broken images and harsh square edges."
+              }
+            },
+            {
+              "scope": "desktop-chrome",
+              "importance": "high",
+              "title": {
+                "zh-CN": "窗口控制只在桌面端显示",
+                "zh-TW": "視窗控制只在桌面端顯示",
+                "en": "Window controls render only in the desktop app"
+              },
+              "body": {
+                "zh-CN": "最小化、最大化和关闭按钮现在仅在 Electron 桌面桥接可用时渲染，浏览器或网页版预览不再显示这些桌面专属控件。",
+                "zh-TW": "最小化、最大化和關閉按鈕現在僅在 Electron 桌面橋接可用時渲染，瀏覽器或網頁版預覽不再顯示這些桌面專屬控制。",
+                "en": "Minimize, maximize, and close buttons now render only when the Electron desktop bridge is available, so browser and web previews no longer show desktop-only controls."
+              }
+            },
+            {
+              "scope": "desktop-chrome",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "窗口按钮图标视觉对齐",
+                "zh-TW": "視窗按鈕圖示視覺對齊",
+                "en": "Window button glyph alignment"
+              },
+              "body": {
+                "zh-CN": "最小化横线改为居中显示，最大化和还原方框缩小并减轻线宽，使其高度略小于关闭叉号并保持同一视觉中心线。",
+                "zh-TW": "最小化橫線改為置中顯示，最大化和還原方框縮小並減輕線寬，使其高度略小於關閉叉號並保持同一視覺中心線。",
+                "en": "The minimize line is centered, and the maximize/restore boxes are smaller and lighter so they sit on the same visual center line while remaining slightly shorter than the close glyph."
+              }
+            }
+          ]
+        },
+        {
+          "type": "compatibility",
+          "title": {
+            "zh-CN": "兼容性说明",
+            "zh-TW": "相容性說明",
+            "en": "Compatibility"
+          },
+          "items": [
+            {
+              "scope": "desktop-update",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "通过桌面自动更新分发",
+                "zh-TW": "透過桌面自動更新分發",
+                "en": "Distributed through desktop auto update"
+              },
+              "body": {
+                "zh-CN": "本版本继续发布 NSIS 安装包、latest.yml 和 blockmap，已安装的 4.1.9 客户端可以通过应用内更新检测到 4.1.10。",
+                "zh-TW": "本版本繼續發布 NSIS 安裝包、latest.yml 和 blockmap，已安裝的 4.1.9 用戶端可以透過應用內更新偵測到 4.1.10。",
+                "en": "This version continues to publish the NSIS installer, latest.yml, and blockmap so installed 4.1.9 clients can detect 4.1.10 in-app."
+              }
+            }
+          ]
+        }
+      ],
+      "knownIssues": []
+    },
+    {
+      "version": "4.1.9",
+      "date": "2026-05-27",
+      "channel": "stable",
+      "download": {
+        "releasePage": "https://github.com/WangJN-ing/hard-sphere-lab-release/releases/tag/v4.1.9",
+        "windowsInstaller": "https://github.com/WangJN-ing/hard-sphere-lab-release/releases/download/v4.1.9/heat-capacity-lab-setup-4.1.9.exe"
+      },
+      "summary": {
+        "zh-CN": "固定桌面程序默认与退出最大化后的 16:9 窗口尺寸，隐藏原生白色标题栏，并把软件图标、名称和窗口控制整合到应用内顶部栏。",
+        "zh-TW": "固定桌面程式預設與退出最大化後的 16:9 視窗尺寸，隱藏原生白色標題列，並把軟體圖示、名稱和視窗控制整合到應用內頂部列。",
+        "en": "Fixes the desktop default and restored 16:9 window size, hides the native white title bar, and moves the app icon, name, and window controls into the in-app top bar."
+      },
+      "sections": [
+        {
+          "type": "changed",
+          "title": {
+            "zh-CN": "改进",
+            "zh-TW": "改進",
+            "en": "Changed"
+          },
+          "items": [
+            {
+              "scope": "desktop-window",
+              "importance": "high",
+              "title": {
+                "zh-CN": "桌面窗口固定为 16:9",
+                "zh-TW": "桌面視窗固定為 16:9",
+                "en": "Desktop window locked to 16:9"
+              },
+              "body": {
+                "zh-CN": "程序默认以 1440×810 打开，退出最大化后也恢复到该尺寸，并限制手动拖动缩放时保持 16:9；同时设置 1280×720 最小尺寸，避免界面被缩得过小。",
+                "zh-TW": "程式預設以 1440×810 開啟，退出最大化後也恢復到該尺寸，並限制手動拖曳縮放時保持 16:9；同時設定 1280×720 最小尺寸，避免介面被縮得過小。",
+                "en": "The app now opens at 1440x810, restores to that size after leaving maximized mode, keeps manual resizing at 16:9, and enforces a 1280x720 minimum size."
+              }
+            },
+            {
+              "scope": "desktop-chrome",
+              "importance": "high",
+              "title": {
+                "zh-CN": "应用内顶部栏接管窗口标题栏",
+                "zh-TW": "應用內頂部列接管視窗標題列",
+                "en": "In-app top bar replaces the native title bar"
+              },
+              "body": {
+                "zh-CN": "隐藏系统原生白色标题栏，把热容比实验室图标、软件名、菜单和最小化/最大化/关闭按钮放入应用自己的顶部栏，使桌面外观与工作台风格统一。",
+                "zh-TW": "隱藏系統原生白色標題列，把熱容比實驗室圖示、軟體名稱、選單和最小化/最大化/關閉按鈕放入應用自己的頂部列，使桌面外觀與工作台風格統一。",
+                "en": "The native white title bar is hidden, and the app icon, name, menus, and minimize/maximize/close buttons now live in the workbench top bar for a unified desktop look."
+              }
+            }
+          ]
+        },
+        {
+          "type": "compatibility",
+          "title": {
+            "zh-CN": "兼容性说明",
+            "zh-TW": "相容性說明",
+            "en": "Compatibility"
+          },
+          "items": [
+            {
+              "scope": "desktop-update",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "通过桌面自动更新分发",
+                "zh-TW": "透過桌面自動更新分發",
+                "en": "Distributed through desktop auto update"
+              },
+              "body": {
+                "zh-CN": "本版本继续发布 NSIS 安装包、latest.yml 和 blockmap，已安装的 4.1.8 客户端可以通过应用内更新检测到 4.1.9。",
+                "zh-TW": "本版本繼續發布 NSIS 安裝包、latest.yml 和 blockmap，已安裝的 4.1.8 用戶端可以透過應用內更新偵測到 4.1.9。",
+                "en": "This version continues to publish the NSIS installer, latest.yml, and blockmap so installed 4.1.8 clients can detect 4.1.9 in-app."
+              }
+            }
+          ]
+        }
+      ],
+      "knownIssues": []
+    },
+    {
+      "version": "4.1.8",
+      "date": "2026-05-27",
+      "channel": "stable",
+      "download": {
+        "releasePage": "https://github.com/WangJN-ing/hard-sphere-lab-release/releases/tag/v4.1.8",
+        "windowsInstaller": "https://github.com/WangJN-ing/hard-sphere-lab-release/releases/download/v4.1.8/heat-capacity-lab-setup-4.1.8.exe"
+      },
+      "summary": {
+        "zh-CN": "修复桌面更新安装流程、立即更新按钮加载动效和跟随系统主题，使后续更新静默保留数据，主动卸载仍可选择是否删除用户数据。",
+        "zh-TW": "修復桌面更新安裝流程、立即更新按鈕載入動效和跟隨系統主題，使後續更新靜默保留資料，主動解除安裝仍可選擇是否刪除使用者資料。",
+        "en": "Fixes the desktop update installer flow, the Update Now loading animation, and real system theme following so future updates preserve data silently while manual uninstall still offers data removal."
+      },
+      "sections": [
+        {
+          "type": "fixed",
+          "title": {
+            "zh-CN": "修复",
+            "zh-TW": "修復",
+            "en": "Fixed"
+          },
+          "items": [
+            {
+              "scope": "desktop-installer",
+              "importance": "high",
+              "title": {
+                "zh-CN": "更新与主动卸载的数据处理分流",
+                "zh-TW": "更新與主動解除安裝的資料處理分流",
+                "en": "Separate data handling for updates and manual uninstall"
+              },
+              "body": {
+                "zh-CN": "从本版安装成功后，后续自动更新会静默保留实验文件、设置和缓存，不再询问是否删除数据；用户主动卸载时仍会弹出确认框，可自行选择是否删除用户数据。",
+                "zh-TW": "從本版安裝成功後，後續自動更新會靜默保留實驗檔案、設定和快取，不再詢問是否刪除資料；使用者主動解除安裝時仍會顯示確認框，可自行選擇是否刪除使用者資料。",
+                "en": "After this version is installed, later auto updates keep experiment files, settings, and cache without asking to delete data. Manual uninstall still asks whether user data should be removed."
+              }
+            },
+            {
+              "scope": "desktop-update-ui",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "立即更新按钮加载动效",
+                "zh-TW": "立即更新按鈕載入動效",
+                "en": "Update Now loading animation"
+              },
+              "body": {
+                "zh-CN": "更新弹窗进入下载、重试或安装状态时，立即更新按钮中的加载图标会持续旋转，避免看起来像更新过程已经卡住。",
+                "zh-TW": "更新視窗進入下載、重試或安裝狀態時，立即更新按鈕中的載入圖示會持續旋轉，避免看起來像更新流程已經卡住。",
+                "en": "When the update dialog is downloading, retrying, or installing, the loader inside the Update Now button keeps spinning so the flow no longer looks frozen."
+              }
+            },
+            {
+              "scope": "workbench-theme",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "跟随系统主题读取真实系统偏好",
+                "zh-TW": "跟隨系統主題讀取真實系統偏好",
+                "en": "System theme follows the real OS preference"
+              },
+              "body": {
+                "zh-CN": "通用设置中的跟随系统不再固定为暗色，而是读取系统亮暗模式并监听系统切换。若用户已手动保存暗色或亮色设置，应用仍会尊重该选择。",
+                "zh-TW": "通用設定中的跟隨系統不再固定為暗色，而是讀取系統亮暗模式並監聽系統切換。若使用者已手動儲存暗色或亮色設定，應用仍會尊重該選擇。",
+                "en": "The System option in General Settings no longer resolves to dark mode by default. It reads the OS light/dark preference and listens for changes while preserving explicit user choices."
+              }
+            }
+          ]
+        },
+        {
+          "type": "compatibility",
+          "title": {
+            "zh-CN": "兼容性说明",
+            "zh-TW": "相容性說明",
+            "en": "Compatibility"
+          },
+          "items": [
+            {
+              "scope": "desktop-update",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "从旧版更新到本版的最后一次提示",
+                "zh-TW": "從舊版更新到本版的最後一次提示",
+                "en": "Last prompt when updating from older versions"
+              },
+              "body": {
+                "zh-CN": "如果当前安装的旧版本卸载器已经包含数据删除提示，更新到本版时仍可能最后弹出一次该旧提示；安装本版后，后续更新将按新的静默保留数据规则执行。",
+                "zh-TW": "如果目前安裝的舊版本解除安裝程式已包含資料刪除提示，更新到本版時仍可能最後顯示一次該舊提示；安裝本版後，後續更新將按新的靜默保留資料規則執行。",
+                "en": "If the currently installed older uninstaller already contains the data-removal prompt, updating to this version may show that old prompt one final time. After this version is installed, later updates follow the new silent keep-data rule."
+              }
+            }
+          ]
+        }
+      ],
+      "knownIssues": []
+    },
+    {
       "version": "4.1.7",
       "date": "2026-05-27",
       "channel": "stable",
@@ -47,6 +2165,10 @@
       "version": "4.1.6",
       "date": "2026-05-27",
       "channel": "stable",
+      "download": {
+        "releasePage": "https://github.com/WangJN-ing/hard-sphere-lab-1/releases/tag/v4.1.6",
+        "windowsInstaller": "https://github.com/WangJN-ing/hard-sphere-lab-1/releases/download/v4.1.6/heat-capacity-lab-setup-4.1.6.exe"
+      },
       "summary": {
         "zh-CN": "迁移桌面自动更新通道，后续版本将从新的公开发布仓库提供安装包、更新元数据和版本说明。",
         "zh-TW": "遷移桌面自動更新通道，後續版本將從新的公開發布倉庫提供安裝包、更新中繼資料和版本說明。",
@@ -91,7 +2213,486 @@
             }
           ]
         }
-      ]
+      ],
+      "knownIssues": []
+    },
+    {
+      "version": "4.1.5",
+      "date": "2026-05-27",
+      "channel": "stable",
+      "download": {
+        "releasePage": "https://github.com/WangJN-ing/hard-sphere-lab-1/releases/tag/v4.1.5",
+        "windowsInstaller": "https://github.com/WangJN-ing/hard-sphere-lab-1/releases/download/v4.1.5/heat-capacity-lab-setup-4.1.5.exe"
+      },
+      "summary": {
+        "zh-CN": "正式发布 Workbench 清理、热容自由实验过程回顾升级、参数栏自动收起、工程化 UI 打磨和多语言/亮暗模式适配。",
+        "zh-TW": "正式發布 Workbench 清理、熱容自由實驗過程回顧升級、參數欄自動收合、工程化 UI 打磨和多語言/亮暗模式適配。",
+        "en": "Promotes the Workbench cleanup, upgraded heat-capacity Free Mode process review, auto-collapsing parameter sidebar, engineering UI polish, and multilingual light/dark support to the official release."
+      },
+      "sections": [
+        {
+          "type": "added",
+          "title": {
+            "zh-CN": "新增",
+            "zh-TW": "新增",
+            "en": "Added"
+          },
+          "items": [
+            {
+              "scope": "heat-capacity-process-review",
+              "importance": "high",
+              "title": {
+                "zh-CN": "热容自由实验理想参考线",
+                "zh-TW": "熱容自由實驗理想參考線",
+                "en": "Ideal reference curve for Heat Capacity Free Mode"
+              },
+              "body": {
+                "zh-CN": "过程回顾现在以实测曲线对比理想参考曲线，理想参考按当前物理参数计算连续快速充气、回温、开阀放气和再次回温过程。",
+                "zh-TW": "過程回顧現在以實測曲線對比理想參考曲線，理想參考會依目前物理參數計算連續快速充氣、回溫、開閥放氣和再次回溫過程。",
+                "en": "Process Review now compares measured traces with an ideal reference curve calculated from the current physical parameters for rapid filling, thermal recovery, valve release, and final recovery."
+              }
+            },
+            {
+              "scope": "heat-capacity-process-review",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "阶段压缩时间轴",
+                "zh-TW": "階段壓縮時間軸",
+                "en": "Stage-compressed timeline"
+              },
+              "body": {
+                "zh-CN": "过程图按实验阶段显示真实时间标签，快速打气和放气阶段放大显示，长等待阶段压缩显示，并保留记录窗口和阶段悬浮底色。",
+                "zh-TW": "過程圖會依實驗階段顯示真實時間標籤，快速打氣和放氣階段放大顯示，長等待階段壓縮顯示，並保留記錄窗口和階段懸浮底色。",
+                "en": "The process charts now show real-time labels on a stage-compressed axis, expanding rapid pump and release phases, compressing long waits, and keeping record-window and stage-hover context."
+              }
+            },
+            {
+              "scope": "heat-capacity-parameters",
+              "importance": "high",
+              "title": {
+                "zh-CN": "热容自由实验参数栏自动收起",
+                "zh-TW": "熱容自由實驗參數欄自動收合",
+                "en": "Auto-collapsing Heat Capacity parameter sidebar"
+              },
+              "body": {
+                "zh-CN": "热容自由实验进入聚焦模式或完成有效操作后会按实验状态自动收起右侧参数栏，避免运行中误改参数。",
+                "zh-TW": "熱容自由實驗進入聚焦模式或完成有效操作後，會依實驗狀態自動收合右側參數欄，避免運行中誤改參數。",
+                "en": "Heat Capacity Free Mode now collapses the right parameter sidebar when focus mode or meaningful experiment actions require locking the run state."
+              }
+            },
+            {
+              "scope": "workbench-settings",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "工程化通用设置布局",
+                "zh-TW": "工程化通用設定版面",
+                "en": "Engineering-style general settings layout"
+              },
+              "body": {
+                "zh-CN": "通用设置重新整理主题、语言、性能模式和快捷键布局，减少装饰性框线并统一亮暗模式对比度。",
+                "zh-TW": "通用設定重新整理主題、語言、效能模式和快捷鍵版面，減少裝飾性框線並統一亮暗模式對比度。",
+                "en": "General Settings reorganizes theme, language, performance, and shortcut controls with quieter engineering surfaces and balanced light/dark contrast."
+              }
+            }
+          ]
+        },
+        {
+          "type": "changed",
+          "title": {
+            "zh-CN": "变更",
+            "zh-TW": "變更",
+            "en": "Changed"
+          },
+          "items": [
+            {
+              "scope": "workbench-cleanup",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "Workbench 入口与旧参考模型清理",
+                "zh-TW": "Workbench 入口與舊參考模型清理",
+                "en": "Workbench entrypoint and legacy reference cleanup"
+              },
+              "body": {
+                "zh-CN": "移除旧标准参考线和旧可达最佳参考实现，过程回顾统一到新的理想参考与阶段时间轴路径。",
+                "zh-TW": "移除舊標準參考線和舊可達最佳參考實作，過程回顧統一到新的理想參考與階段時間軸路徑。",
+                "en": "Removed the old standard-reference and reachable-best reference implementations so Process Review uses the new ideal-reference and stage-axis path."
+              }
+            },
+            {
+              "scope": "heat-capacity-process-review",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "过程回顾图例简化",
+                "zh-TW": "過程回顧圖例簡化",
+                "en": "Simplified Process Review legend"
+              },
+              "body": {
+                "zh-CN": "主图只保留实测、理想参考和记录窗口，去除标准基线切换和旧推荐参考 UI。",
+                "zh-TW": "主圖只保留實測、理想參考和記錄窗口，移除標準基線切換和舊推薦參考 UI。",
+                "en": "Main charts now keep only measured data, ideal reference, and record-window context, removing the standard-baseline toggle and older recommendation UI."
+              }
+            },
+            {
+              "scope": "workbench-ui",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "Workbench 按钮与面板表面",
+                "zh-TW": "Workbench 按鈕與面板表面",
+                "en": "Workbench button and panel surfaces"
+              },
+              "body": {
+                "zh-CN": "Workbench、热容参数和实验资料窗口减少阴影、渐变和装饰色条，改为更稳定的实体按钮与低干扰面板层级。",
+                "zh-TW": "Workbench、熱容參數和實驗資料視窗減少陰影、漸層和裝飾色條，改為更穩定的實體按鈕與低干擾面板層級。",
+                "en": "Workbench, Heat Capacity parameter panels, and results surfaces reduce shadows, gradients, and decorative color strips in favor of steadier solid controls."
+              }
+            }
+          ]
+        },
+        {
+          "type": "fixed",
+          "title": {
+            "zh-CN": "修复",
+            "zh-TW": "修復",
+            "en": "Fixed"
+          },
+          "items": [
+            {
+              "scope": "heat-capacity-3d",
+              "importance": "high",
+              "title": {
+                "zh-CN": "热容 3D 悬浮控制稳定性",
+                "zh-TW": "熱容 3D 懸浮控制穩定性",
+                "en": "Heat Capacity 3D hover-control stability"
+              },
+              "body": {
+                "zh-CN": "修复热容 3D 预览中鼠标悬浮后模型被异常移动的问题，恢复旋转、平移、缩放和焦点交互的预期控制逻辑。",
+                "zh-TW": "修復熱容 3D 預覽中滑鼠懸浮後模型被異常移動的問題，恢復旋轉、平移、縮放和焦點互動的預期控制邏輯。",
+                "en": "Fixes the Heat Capacity 3D preview behavior where hovering could move the model unexpectedly, restoring expected rotate, pan, zoom, and focus controls."
+              }
+            },
+            {
+              "scope": "workbench-settings",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "通用设置语言菜单焦点警告",
+                "zh-TW": "通用設定語言選單焦點警告",
+                "en": "General Settings language-menu focus warning"
+              },
+              "body": {
+                "zh-CN": "修复通用设置切换语言后菜单关闭时仍隐藏焦点元素的无障碍警告。",
+                "zh-TW": "修復通用設定切換語言後選單關閉時仍隱藏焦點元素的無障礙警告。",
+                "en": "Fixes the accessibility warning caused by hiding the focused language-menu element after changing languages."
+              }
+            },
+            {
+              "scope": "localization",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "过程回顾新增 UI 的多语言覆盖",
+                "zh-TW": "過程回顧新增 UI 的多語言覆蓋",
+                "en": "Multilingual coverage for new Process Review UI"
+              },
+              "body": {
+                "zh-CN": "补齐过程回顾新增图例、阶段标签、记录提示、空状态和摘要外壳在简体中文、繁体中文和英文下的显示。",
+                "zh-TW": "補齊過程回顧新增圖例、階段標籤、記錄提示、空狀態和摘要外殼在簡體中文、繁體中文和英文下的顯示。",
+                "en": "Adds localized Simplified Chinese, Traditional Chinese, and English text for the new legends, stage labels, record hints, empty states, and summary shell."
+              }
+            }
+          ]
+        },
+        {
+          "type": "compatibility",
+          "title": {
+            "zh-CN": "兼容性说明",
+            "zh-TW": "相容性說明",
+            "en": "Compatibility"
+          },
+          "items": [
+            {
+              "scope": "desktop-update",
+              "importance": "high",
+              "title": {
+                "zh-CN": "桌面自动更新资产保持完整",
+                "zh-TW": "桌面自動更新資產保持完整",
+                "en": "Desktop auto-update assets remain complete"
+              },
+              "body": {
+                "zh-CN": "4.1.5 继续发布 NSIS 安装包、latest.yml 和 blockmap，4.1.4 安装版可通过应用内更新检测到正式版。",
+                "zh-TW": "4.1.5 繼續發布 NSIS 安裝包、latest.yml 和 blockmap，4.1.4 安裝版可透過應用內更新偵測到正式版。",
+                "en": "4.1.5 continues to ship the NSIS installer, latest.yml, and blockmap so installed 4.1.4 clients can detect the official update in-app."
+              }
+            }
+          ]
+        }
+      ],
+      "knownIssues": []
+    },
+    {
+      "version": "4.1.4",
+      "date": "2026-05-25",
+      "channel": "stable",
+      "download": {
+        "releasePage": "https://github.com/WangJN-ing/hard-sphere-lab-1/releases/tag/v4.1.4",
+        "windowsInstaller": "https://github.com/WangJN-ing/hard-sphere-lab-1/releases/download/v4.1.4/heat-capacity-lab-setup-4.1.4.exe"
+      },
+      "summary": {
+        "zh-CN": "相比 v4.1.3，本版补齐热容自由实验参数调整、过程回顾、保存恢复、工程化参数界面和桌面更新失败恢复能力。",
+        "zh-TW": "相比 v4.1.3，本版補齊熱容自由實驗參數調整、過程回顧、儲存恢復、工程化參數介面和桌面更新失敗恢復能力。",
+        "en": "Compared with v4.1.3, this release adds heat-capacity free-experiment parameter control, process review, persistence, engineering-style parameter UI, and desktop update recovery improvements."
+      },
+      "sections": [
+        {
+          "type": "added",
+          "title": {
+            "zh-CN": "新增",
+            "zh-TW": "新增",
+            "en": "Added"
+          },
+          "items": [
+            {
+              "scope": "heat-capacity",
+              "importance": "high",
+              "title": {
+                "zh-CN": "热容自由实验参数调整体系",
+                "zh-TW": "熱容自由實驗參數調整體系",
+                "en": "Heat-capacity free-experiment parameter controls"
+              },
+              "body": {
+                "zh-CN": "自由实验现在可在新实验组开始前调整环境、热交换、传感、泄漏、记录判定、安全阈值和可视化参数。",
+                "zh-TW": "自由實驗現在可在新實驗組開始前調整環境、熱交換、感測、洩漏、記錄判定、安全閾值和視覺化參數。",
+                "en": "Free experiments can now adjust environment, thermal exchange, sensor, leakage, recording, safety, and visualization parameters before a new group starts."
+              }
+            },
+            {
+              "scope": "heat-capacity",
+              "importance": "high",
+              "title": {
+                "zh-CN": "热容自由实验过程回顾与评分",
+                "zh-TW": "熱容自由實驗過程回顧與評分",
+                "en": "Heat-capacity free-experiment process review and scoring"
+              },
+              "body": {
+                "zh-CN": "新增轨迹数据、最佳记录窗口、过程评分和过程回顾面板，用于复盘放气、回温、记录时机和结果质量。",
+                "zh-TW": "新增軌跡資料、最佳記錄視窗、過程評分和過程回顧面板，用於復盤放氣、回溫、記錄時機和結果品質。",
+                "en": "Adds trace data, best recording windows, process scoring, and review panels for release, recovery, recording timing, and result quality."
+              }
+            },
+            {
+              "scope": "heat-capacity",
+              "importance": "high",
+              "title": {
+                "zh-CN": "参数按实验组生效并隔离历史结果",
+                "zh-TW": "參數按實驗組生效並隔離歷史結果",
+                "en": "Per-group parameter effect with isolated history"
+              },
+              "body": {
+                "zh-CN": "已完成实验组保留原始参数快照，重置到下一组后才重新允许调整组级参数。",
+                "zh-TW": "已完成實驗組保留原始參數快照，重置到下一組後才重新允許調整組級參數。",
+                "en": "Completed groups keep their original parameter snapshots, and group-level parameters become editable again only after resetting to the next group."
+              }
+            },
+            {
+              "scope": "persistence",
+              "importance": "high",
+              "title": {
+                "zh-CN": "实验文件保存恢复与数据版本",
+                "zh-TW": "實驗檔案儲存恢復與資料版本",
+                "en": "Experiment persistence and data schema versions"
+              },
+              "body": {
+                "zh-CN": "新增热容、理想气体和标准模拟的数据 schema 与迁移路径，工作区文件可保存参数、记录、结果和运行状态。",
+                "zh-TW": "新增熱容、理想氣體和標準模擬的資料 schema 與遷移路徑，工作區檔案可儲存參數、記錄、結果和執行狀態。",
+                "en": "Adds data schemas and migration paths for heat-capacity, ideal-gas, and standard simulations so workspace files can persist parameters, records, results, and runtime state."
+              }
+            },
+            {
+              "scope": "desktop-update",
+              "importance": "high",
+              "title": {
+                "zh-CN": "更新失败后的手动下载入口",
+                "zh-TW": "更新失敗後的手動下載入口",
+                "en": "Manual download after update failure"
+              },
+              "body": {
+                "zh-CN": "自动下载多次失败后，可直接打开 GitHub Release 中的 Windows 安装包。",
+                "zh-TW": "自動下載多次失敗後，可直接開啟 GitHub Release 中的 Windows 安裝程式。",
+                "en": "After repeated automatic download failures, the app can open the Windows installer asset from the GitHub Release."
+              }
+            },
+            {
+              "scope": "ui",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "参数界面统一为工程软件风格",
+                "zh-TW": "參數介面統一為工程軟體風格",
+                "en": "Engineering-style parameter interface"
+              },
+              "body": {
+                "zh-CN": "热容、理想气体和标准模拟的参数行样式完成统一，并补齐亮暗模式适配。",
+                "zh-TW": "熱容、理想氣體和標準模擬的參數列樣式完成統一，並補齊亮暗模式適配。",
+                "en": "Heat-capacity, ideal-gas, and standard-simulation parameter rows now use a consistent engineering UI style with light/dark theme support."
+              }
+            },
+            {
+              "scope": "desktop-update",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "结构化更新说明",
+                "zh-TW": "結構化更新說明",
+                "en": "Structured release notes"
+              },
+              "body": {
+                "zh-CN": "更新弹窗按新增、变更、修复和兼容性说明展示本次更新内容。",
+                "zh-TW": "更新彈窗按新增、變更、修復和相容性說明展示本次更新內容。",
+                "en": "The update dialog groups release notes by added, changed, fixed, and compatibility sections."
+              }
+            }
+          ]
+        },
+        {
+          "type": "changed",
+          "title": {
+            "zh-CN": "变更",
+            "zh-TW": "變更",
+            "en": "Changed"
+          },
+          "items": [
+            {
+              "scope": "heat-capacity",
+              "importance": "high",
+              "title": {
+                "zh-CN": "参数影响方向与物理链路修正",
+                "zh-TW": "參數影響方向與物理鏈路修正",
+                "en": "Parameter impact direction and physics-path corrections"
+              },
+              "body": {
+                "zh-CN": "修正热交换、泄漏、传感响应、压力安全和理论参考值相关边界，使参数调整后的 UI 变化与模型方向一致。",
+                "zh-TW": "修正熱交換、洩漏、感測響應、壓力安全和理論參考值相關邊界，使參數調整後的 UI 變化與模型方向一致。",
+                "en": "Corrects thermal exchange, leakage, sensor response, pressure safety, and reference-value boundaries so UI changes match the model direction."
+              }
+            },
+            {
+              "scope": "heat-capacity",
+              "importance": "high",
+              "title": {
+                "zh-CN": "热容自由实验记录判定更严格",
+                "zh-TW": "熱容自由實驗記錄判定更嚴格",
+                "en": "Stricter free-experiment recording validation"
+              },
+              "body": {
+                "zh-CN": "U0、U1、U2 记录现在会结合零点容差、压力/温度稳定斜率、最小有效读数和安全阈值，拦截不可靠记录。",
+                "zh-TW": "U0、U1、U2 記錄現在會結合零點容差、壓力/溫度穩定斜率、最小有效讀數和安全閾值，攔截不可靠記錄。",
+                "en": "U0, U1, and U2 recording now combines zero tolerance, pressure/temperature stability slopes, minimum valid readings, and safety thresholds to block unreliable records."
+              }
+            },
+            {
+              "scope": "ui",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "热容可视化与性能控制调整",
+                "zh-TW": "熱容視覺化與效能控制調整",
+                "en": "Heat-capacity visualization and performance controls"
+              },
+              "body": {
+                "zh-CN": "小球可视化改为独立显示开关，粒子数量和速率由高性能、均衡、低负载三档性能模式控制。",
+                "zh-TW": "小球視覺化改為獨立顯示開關，粒子數量和速率由高效能、均衡、低負載三檔效能模式控制。",
+                "en": "Particle visualization now uses a separate visibility switch, while particle count and rate are controlled by performance, balanced, and low-load modes."
+              }
+            },
+            {
+              "scope": "workbench",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "工作台交互性能优化",
+                "zh-TW": "工作台互動效能最佳化",
+                "en": "Workbench interaction performance improvements"
+              },
+              "body": {
+                "zh-CN": "降低拖拽分栏和热容演示动画的状态提交频率，减少运行时 UI 抖动和不必要重渲染。",
+                "zh-TW": "降低拖曳分欄和熱容演示動畫的狀態提交頻率，減少執行時 UI 抖動和不必要重繪。",
+                "en": "Reduces state commits during split resizing and heat-capacity demo animation to avoid UI jitter and unnecessary re-renders."
+              }
+            },
+            {
+              "scope": "desktop-update",
+              "importance": "high",
+              "title": {
+                "zh-CN": "网络波动自动重试",
+                "zh-TW": "網路波動自動重試",
+                "en": "Automatic retry for transient network failures"
+              },
+              "body": {
+                "zh-CN": "更新下载遇到临时网络错误时最多尝试 3 次，并在界面显示当前尝试次数。",
+                "zh-TW": "更新下載遇到暫時性網路錯誤時最多嘗試 3 次，並在介面顯示目前嘗試次數。",
+                "en": "Update downloads retry up to three attempts for transient network errors and show the current attempt count."
+              }
+            }
+          ]
+        },
+        {
+          "type": "fixed",
+          "title": {
+            "zh-CN": "修复",
+            "zh-TW": "修復",
+            "en": "Fixed"
+          },
+          "items": [
+            {
+              "scope": "heat-capacity",
+              "importance": "high",
+              "title": {
+                "zh-CN": "热容自由实验物理模型边界修复",
+                "zh-TW": "熱容自由實驗物理模型邊界修復",
+                "en": "Heat-capacity free-experiment physics boundary fixes"
+              },
+              "body": {
+                "zh-CN": "修复热交换、泄漏、传感滞后、噪声、压力安全和理论参考值相关边界，使参数调整后的变化方向与模型含义一致。",
+                "zh-TW": "修復熱交換、洩漏、感測滯後、噪聲、壓力安全和理論參考值相關邊界，使參數調整後的變化方向與模型含義一致。",
+                "en": "Fixes thermal exchange, leakage, sensor lag, noise, pressure safety, and reference-value boundaries so parameter changes follow the intended model direction."
+              }
+            },
+            {
+              "scope": "desktop-update",
+              "importance": "medium",
+              "title": {
+                "zh-CN": "失败信息更明确",
+                "zh-TW": "失敗資訊更明確",
+                "en": "Clearer failure information"
+              },
+              "body": {
+                "zh-CN": "下载失败会说明已重试次数，并保留稍后重试和手动下载两种恢复路径。",
+                "zh-TW": "下載失敗會說明已重試次數，並保留稍後重試和手動下載兩種恢復路徑。",
+                "en": "Download failures show the completed attempt count and keep both retry and manual download recovery paths available."
+              }
+            }
+          ]
+        },
+        {
+          "type": "compatibility",
+          "title": {
+            "zh-CN": "兼容性说明",
+            "zh-TW": "相容性說明",
+            "en": "Compatibility"
+          },
+          "items": [
+            {
+              "scope": "desktop-update",
+              "importance": "low",
+              "title": {
+                "zh-CN": "仅桌面安装版可自动更新",
+                "zh-TW": "僅桌面安裝版可自動更新",
+                "en": "Automatic updates remain desktop-installer only"
+              },
+              "body": {
+                "zh-CN": "浏览器预览和开发模式仍只显示更新状态，不执行安装包下载和重启安装。",
+                "zh-TW": "瀏覽器預覽和開發模式仍只顯示更新狀態，不執行安裝包下載和重新啟動安裝。",
+                "en": "Browser previews and development mode still show update status only and do not download installers or restart to install."
+              }
+            }
+          ]
+        }
+      ],
+      "knownIssues": []
     }
   ]
 }

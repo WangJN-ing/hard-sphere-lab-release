@@ -1,5 +1,12 @@
 # Changelog
 
+## 5.1.2
+
+- Builds on 5.1.1 with precise recovery for valid legacy workspaces, never-reused internal experiment IDs, complete Free, Guide, and Demo records, and strict post-commit save verification.
+- Stabilizes mode switching, reminder and tick lifecycles, WebGL recovery, and numeric boundaries so normal experiment runs do not produce transient save failures.
+- Adds update recovery to the read-only persistence failure page and retains the existing appId, NSIS identity, update repository, and `hard-sphere-lab` user-data directory.
+- Introduces the localized 气律实验室, 氣律實驗室, and Gas Laws Lab names plus the new Windows and web application icon.
+
 ## 4.1.7
 
 - Publishes the first acceptance release from the public release repository.

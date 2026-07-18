@@ -1,8 +1,8 @@
-# Heat Capacity Ratio Lab
+# Gas Laws Lab
 
 ## Project Introduction
 
-Heat Capacity Ratio Lab is a desktop application for heat capacity ratio experiments, standard molecular simulation, and ideal gas relationship verification. It provides 3D previews, real-time data, parameter controls, experiment records, process review, and result calculation.
+Gas Laws Lab is a desktop application for heat capacity ratio experiments, standard molecular simulation, and ideal gas relationship verification. It provides 3D previews, real-time data, parameter controls, experiment records, process review, and result calculation.
 
 This repository is the public release repository. It is used only for installers, auto-update assets, and release notes; it does not contain the application source code.
 
@@ -10,7 +10,11 @@ This repository is the public release repository. It is used only for installers
 
 Download the latest non-prerelease version from this repository's GitHub Releases page unless a course or maintainer instructs otherwise.
 
+The latest stable release is `v5.1.2`. A normally running 5.1.1 installation can check for and install the update in-app. If 5.1.1 is already on the read-only persistence failure page, download the 5.1.2 installer from Releases and install it over the existing copy.
+
 The Windows installer uses the file name pattern `heat-capacity-lab-setup-x.y.z.exe`. After downloading it, run the installer to install the app or install over an existing version.
+
+Do not uninstall the previous version or clear `C:\Users\<username>\AppData\Roaming\hard-sphere-lab` when upgrading. Version 5.1.2 retains the existing appId, installer identity, update repository, and user-data directory.
 
 ## Auto Update
 
