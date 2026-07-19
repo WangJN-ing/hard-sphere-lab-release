@@ -1,5 +1,12 @@
 # Changelog
 
+## 5.2.0
+
+- Moves V3 workspace projection, fingerprinting, generation commits, and read-back verification into a background Worker, while semantic saves use bounded debounce and continuous runs checkpoint at most once every 15 seconds.
+- Preserves valid standard, ideal-gas, and heat-capacity workspaces written by 4.2.3 and 5.1.1. Data written by the withdrawn 5.1.2 build is outside the compatibility guarantee.
+- Bounds Free traces to 800 samples and 320 detailed events per branch, 4 detailed branches per trial, and 7 completed trials plus the active trial per parameter domain.
+- Retries temporary persistence failures, prunes invalid candidates after quota failures, retains the last verified generation, and keeps save errors non-blocking.
+
 ## 5.1.2
 
 - Builds on 5.1.1 with precise recovery for valid legacy workspaces, never-reused internal experiment IDs, complete Free, Guide, and Demo records, and strict post-commit save verification.

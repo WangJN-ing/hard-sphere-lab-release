@@ -10,15 +10,15 @@ This repository is the public release repository. It is used only for installers
 
 Download the latest non-prerelease version from this repository's GitHub Releases page unless a course or maintainer instructs otherwise.
 
-The latest stable release is `v5.1.2`. A normally running 5.1.1 installation can check for and install the update in-app. If 5.1.1 is already on the read-only persistence failure page, download the 5.1.2 installer from Releases and install it over the existing copy.
+The latest stable release is [`v5.2.0`](https://github.com/WangJN-ing/hard-sphere-lab-release/releases/tag/v5.2.0). Users of 4.2.3 and 5.1.1 can click **Check for Updates** in the in-app About window, or download the 5.2.0 installer from Releases and install it over the existing copy.
 
 The Windows installer uses the file name pattern `heat-capacity-lab-setup-x.y.z.exe`. After downloading it, run the installer to install the app or install over an existing version.
 
-Do not uninstall the previous version or clear `C:\Users\<username>\AppData\Roaming\hard-sphere-lab` when upgrading. Version 5.1.2 retains the existing appId, installer identity, update repository, and user-data directory.
+You normally do not need to uninstall the previous version or clear `C:\Users\<username>\AppData\Roaming\hard-sphere-lab` when upgrading. Version 5.2.0 retains the existing appId, installer identity, update repository, and user-data directory, and officially supports valid workspaces written by 4.2.3 and 5.1.1. Experimental data written by the withdrawn 5.1.2 build is outside the compatibility guarantee; if that data prevents the app from opening, back up the user-data directory before resetting the local workspace.
 
 ## Auto Update
 
-Installed desktop clients can check for updates inside the app. Auto update requires the same GitHub Release to include `latest.yml`, the installer `.exe`, and the `.exe.blockmap` file.
+Installed desktop clients can check for updates inside the app. The current versions do not check automatically at startup, so open the About window from the Help menu and click **Check for Updates**. Auto update requires the same GitHub Release to include `latest.yml`, the installer `.exe`, and the `.exe.blockmap` file.
 
 If auto update fails, download the latest installer manually from this repository's Releases page and install it over the existing version.
 
