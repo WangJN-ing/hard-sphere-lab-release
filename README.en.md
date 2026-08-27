@@ -12,7 +12,7 @@ This is the public release repository. It contains installers, auto-update asset
 
 The latest stable release is [`v6.1.1`](https://github.com/WangJN-ing/hard-sphere-lab-release/releases/tag/v6.1.1). Download `heat-capacity-lab-setup-6.1.1.exe` from Releases, verify that it came from this repository, and run it.
 
-Users upgrading from 5.3.1 normally do not need to uninstall first. Version 6.1.1 retains the application ID, installer identity, update repository, and `C:\Users\<username>\AppData\Roaming\hard-sphere-lab` user-data directory. Do not clear that directory before upgrading. The release gate performs a 5.3.1 → 6.1.1 same-path replacement, profile-preservation, launch, and error check on a fresh temporary Windows machine.
+Users upgrading from 5.3.1 normally do not need to uninstall first. Version 6.1.1 retains the application ID, installer identity, update repository, and `C:\Users\<username>\AppData\Roaming\hard-sphere-lab` user-data directory. Do not clear that directory before upgrading. The release gate passed a 5.3.1 → 6.1.1 same-path replacement, profile-preservation, launch, and error check on a fresh temporary Windows machine; see the [validation run](https://github.com/WangJN-ing/hard-sphere-lab-1/actions/runs/33030767722).
 
 Data written by the withdrawn experimental 5.1.2 build is outside the compatibility guarantee. If old data prevents startup, back up the user-data directory before following the recovery instructions in the Release notes; do not delete the only copy of the data.
 
@@ -53,7 +53,7 @@ Standard Simulation provides hard-sphere molecular motion, realtime sampling, an
 - `docs/releases/release-notes.json`: structured trilingual notes used by the in-app update window.
 - GitHub Releases: installers, update metadata, and complete notes for each release.
 
-Version 6.1.1 updates npm, Electron, installer tooling, audio attribution, and 3D-model provenance. Complete third-party licenses and model-source records are distributed with the installer and available inside the app.
+Version 6.1.1 updates npm, Electron, installer tooling, audio attribution, and 3D-model provenance. The installer includes 468 classified dependency-license records, with complete third-party licenses and model-source records available inside the app; the full npm audit reported zero vulnerabilities at release time.
 
 ## FAQ
 

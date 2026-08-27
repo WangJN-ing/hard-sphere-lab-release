@@ -7,7 +7,7 @@
 - Enforces strict Guide ordering: out-of-step controls animate to acknowledge input but cannot change physical state.
 - Replaces the formal piston model with the audited hybrid refinement while preserving functional node, hierarchy, origin, motion-axis, hit-target, magnetic-snap, scale, and camera contracts.
 - Updates Electron, js-yaml, PostCSS, installer tooling, generated legal notices, audio attribution, and 3D-model provenance; npm security audits report zero known vulnerabilities at release time.
-- Adds a clean-Windows 5.3.1 → 6.1.1 same-path upgrade gate in addition to exact differential blockmap reconstruction.
+- Passes a clean-Windows 5.3.1 → 6.1.1 same-path upgrade gate, including workspace migration and exact differential blockmap reconstruction.
 
 ## 5.3.1
 

@@ -12,7 +12,7 @@
 
 当前最新稳定版为 [`v6.1.1`](https://github.com/WangJN-ing/hard-sphere-lab-release/releases/tag/v6.1.1)。请从 Releases 页面下载 `heat-capacity-lab-setup-6.1.1.exe`，确认来源为本仓库后运行安装。
 
-从 5.3.1 升级时通常不需要卸载旧版本。6.1.1 保持相同的应用 ID、安装身份、更新仓库和 `C:\Users\<用户名>\AppData\Roaming\hard-sphere-lab` 用户资料目录；请勿在升级前清空该目录。发行门禁会在全新的 Windows 临时机上执行 5.3.1 → 6.1.1 同路径覆盖升级、旧资料继承、启动和错误检查。
+从 5.3.1 升级时通常不需要卸载旧版本。6.1.1 保持相同的应用 ID、安装身份、更新仓库和 `C:\Users\<用户名>\AppData\Roaming\hard-sphere-lab` 用户资料目录；请勿在升级前清空该目录。发行门禁已在全新的 Windows 临时机上通过 5.3.1 → 6.1.1 同路径覆盖升级、旧资料继承、启动和错误检查；可查阅[验证记录](https://github.com/WangJN-ing/hard-sphere-lab-1/actions/runs/33030767722)。
 
 已撤回的 5.1.2 实验版数据不在兼容承诺内。如果旧数据导致程序无法启动，请先备份用户资料目录，再按 Release 说明处理；不要直接删除唯一的数据副本。
 
@@ -53,7 +53,7 @@
 - `docs/releases/release-notes.json`：应用更新窗口使用的结构化三语言说明。
 - GitHub Releases：安装包、更新元数据和每个版本的完整说明。
 
-6.1.1 已更新 npm、Electron、安装器工具、音频与 3D 模型来源记录。完整第三方许可和模型来源材料随安装包提供，并可在应用内查看。
+6.1.1 已更新 npm、Electron、安装器工具、音频与 3D 模型来源记录。安装包包含 468 条已分类依赖许可记录，完整第三方许可和模型来源材料均可在应用内查看；发布时完整 npm 审计为 0 漏洞。
 
 ## 常见问题
 
