@@ -1,109 +1,70 @@
 # Gas Laws Lab
 
-## Project Introduction
+[简体中文](./README.md) · [繁體中文](./README.zh-TW.md)
 
-Gas Laws Lab is a desktop application for heat capacity ratio experiments, standard molecular simulation, and ideal gas relationship verification. It provides 3D previews, real-time data, parameter controls, experiment records, process review, and result calculation.
+## Introduction
 
-This repository is the public release repository. It is used only for installers, auto-update assets, and release notes; it does not contain the application source code.
+Gas Laws Lab is a Windows desktop application for thermal and molecular-motion experiments. It includes standard hard-sphere simulation, ideal-gas relation studies, and air heat-capacity-ratio experiments using both adiabatic expansion and piston oscillation.
 
-## Download And Installation
+This is the public release repository. It contains installers, auto-update assets, and multilingual release notes only. The application source is available in the public [hard-sphere-lab-1](https://github.com/WangJN-ing/hard-sphere-lab-1) repository.
 
-Download the latest non-prerelease version from this repository's GitHub Releases page unless a course or maintainer instructs otherwise.
+## Download and installation
 
-The latest stable release is [`v5.2.0`](https://github.com/WangJN-ing/hard-sphere-lab-release/releases/tag/v5.2.0). Users of 4.2.3 and 5.1.1 can click **Check for Updates** in the in-app About window, or download the 5.2.0 installer from Releases and install it over the existing copy.
+The latest stable release is [`v6.1.1`](https://github.com/WangJN-ing/hard-sphere-lab-release/releases/tag/v6.1.1). Download `heat-capacity-lab-setup-6.1.1.exe` from Releases, verify that it came from this repository, and run it.
 
-The Windows installer uses the file name pattern `heat-capacity-lab-setup-x.y.z.exe`. After downloading it, run the installer to install the app or install over an existing version.
+Users upgrading from 5.3.1 normally do not need to uninstall first. Version 6.1.1 retains the application ID, installer identity, update repository, and `C:\Users\<username>\AppData\Roaming\hard-sphere-lab` user-data directory. Do not clear that directory before upgrading. The release gate performs a 5.3.1 → 6.1.1 same-path replacement, profile-preservation, launch, and error check on a fresh temporary Windows machine.
 
-You normally do not need to uninstall the previous version or clear `C:\Users\<username>\AppData\Roaming\hard-sphere-lab` when upgrading. Version 5.2.0 retains the existing appId, installer identity, update repository, and user-data directory, and officially supports valid workspaces written by 4.2.3 and 5.1.1. Experimental data written by the withdrawn 5.1.2 build is outside the compatibility guarantee; if that data prevents the app from opening, back up the user-data directory before resetting the local workspace.
+Data written by the withdrawn experimental 5.1.2 build is outside the compatibility guarantee. If old data prevents startup, back up the user-data directory before following the recovery instructions in the Release notes; do not delete the only copy of the data.
 
-## Auto Update
+## Auto update
 
-Installed desktop clients can check for updates inside the app. The current versions do not check automatically at startup, so open the About window from the Help menu and click **Check for Updates**. Auto update requires the same GitHub Release to include `latest.yml`, the installer `.exe`, and the `.exe.blockmap` file.
+Open **Help → About** and click **Check for Updates**. A stable update requires all three matching files in the same GitHub Release:
 
-If auto update fails, download the latest installer manually from this repository's Releases page and install it over the existing version.
+- `heat-capacity-lab-setup-6.1.1.exe`
+- `heat-capacity-lab-setup-6.1.1.exe.blockmap`
+- `latest.yml`
 
-## Main Workflow
+If automatic update fails, download the latest installer and install it over the existing copy. An uninstall is not required unless a Release explicitly documents an incompatibility.
 
-1. Create or open an experiment file.
-2. Select the experiment file in the left sidebar and open the required experiment panel.
-3. Adjust the current experiment parameters in the right sidebar.
-4. Run the experiment in the center workspace, and view the 3D preview, real-time data, and charts.
-5. Record data, inspect relationship curves, or complete sampling according to the experiment type.
-6. After the experiment is complete, open Results, Data Processing, or Process Review from the left sidebar.
-7. The bottom console shows runtime information, save messages, warnings, and action feedback in real time.
+## Experiment modules
 
-## Experiment Modules
+### Heat-capacity ratio by adiabatic expansion
 
-### Heat Capacity Ratio Experiment
+Demo, Guide, and Free modes cover zeroing, pumping, waiting, rapid release, recovery, U₀/U₁/U₂ records, multi-group experiments, calculation, scoring, process review, and report export.
 
-The heat capacity ratio experiment supports demonstration, guided, and free workflows. In free experiments, users can adjust experiment parameters and complete the high-level process of pumping, warm-up or recovery, valve release, and final recovery.
+### Heat-capacity ratio by piston oscillation
 
-Key data can be recorded during the experiment. Process Review shows the measured curve, ideal reference curve, stage timeline, and record window for reviewing the run. The Results page calculates the heat capacity ratio and displays error or score information.
+Version 6.1.1 adds a complete Demo, a complete Guide, and normal 3D operation. The Free entry remains labelled as not yet available.
 
-### Standard Simulation
+- A pressable physical power control combines the sensor and computer-acquisition power states.
+- Power must be on before sampling-rate and pressure input, plots, or data recording are available. When off, the **Realtime Data** title remains and the content area shows only **Power off**.
+- Guide enforces the current step. Pressing another control produces acknowledgement motion without changing experiment state, followed by a prompt to finish the current step.
+- Three runs use 80, 70, and 60 mm heights and cover platform/scale adjustment, screw locking and release, hose disconnect/drag/magnetic reconnection, acquisition, piston release, stop, save, and period selection.
+- After period selection, the 3D + realtime layout returns and Guide requires power-off before opening calculation directly.
+- Demo plays the complete sequence and powers the instrument off automatically at the end.
 
-Standard Simulation provides hard-sphere molecular simulation for real-time observation, sampled data collection, and result charts.
+### Standard and ideal-gas simulations
 
-### Ideal Gas Simulation
+Standard Simulation provides hard-sphere molecular motion, realtime sampling, and result charts. Ideal Gas supports `P-T`, `P-V`, and `P-N` scans, fitting, and verification.
 
-Ideal Gas Simulation supports `P-T`, `P-V`, and `P-N` relationship verification. Users can generate data points with the relation selector, scan variable, and sampling preset, then review the relationship verification results.
+## Release notes and licenses
 
-## Core Features
+- `CHANGELOG.md`: user-facing release history.
+- `docs/releases/release-notes.json`: structured trilingual notes used by the in-app update window.
+- GitHub Releases: installers, update metadata, and complete notes for each release.
 
-- Parameter adjustment
-- 3D preview
-- Real-time data and charts
-- Data recording
-- Result calculation
-- Process review
-- Multilingual UI
-- Light and dark modes
-- Desktop auto update
-
-## Version Notes
-
-Version notes are available in `CHANGELOG.md`, `docs/releases/release-notes.json`, and GitHub Releases.
-
-Release notes are available in Simplified Chinese, Traditional Chinese, and English.
-
-## Repository Structure
-
-```text
-README.md
-  Simplified Chinese download, update, and usage guide.
-
-README.zh-TW.md
-  Traditional Chinese download, update, and usage guide.
-
-README.en.md
-  English download, update, and usage guide.
-
-CHANGELOG.md
-  Human-readable version history.
-
-docs/releases/release-notes.json
-  Structured multilingual release notes used by the release process and update dialog.
-
-GitHub Releases
-  Installer, latest.yml, and blockmap assets for each release.
-```
+Version 6.1.1 updates npm, Electron, installer tooling, audio attribution, and 3D-model provenance. Complete third-party licenses and model-source records are distributed with the installer and available inside the app.
 
 ## FAQ
 
-**Where do I download the app?**  
-Download the latest non-prerelease installer from this repository's GitHub Releases page.
+**Will upgrading remove old experiments?**  
+A normal 5.3.1 → 6.1.1 in-place upgrade reuses the existing user-data directory. A backup is still recommended before important classes or experiments.
 
-**What should I do if auto update fails?**  
-Download the latest `heat-capacity-lab-setup-x.y.z.exe` manually and install it over the existing version.
+**Why does Realtime Data show only “Power off”?**  
+This is the normal off state in the piston-oscillation experiment. Press the power control on the 3D instrument first.
+
+**What if auto update fails?**  
+Download the 6.1.1 installer from Releases and install it over the existing copy while retaining the user-data directory.
 
 **Why might Windows show a safety warning?**  
-Windows may show a safety prompt for installers downloaded from the internet. Confirm that the installer came from this repository's Releases page before continuing.
-
-**How do I check the current app version?**  
-Open the app's About or version information entry to view the current version.
-
-**Does this repository contain source code?**  
-No. This repository only provides release assets, auto-update files, and version notes.
-
-**Where can I read release notes?**  
-Read `CHANGELOG.md`, `docs/releases/release-notes.json`, or the corresponding GitHub Release page.
+Windows may warn about internet-downloaded installers that have not accumulated enough reputation. Verify the repository URL and Release file name before continuing.
