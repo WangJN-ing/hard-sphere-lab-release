@@ -1,5 +1,17 @@
 # Changelog
 
+## 6.2.1
+
+- Fixes the first Free acquisition render failure while the formal pressure curve is still incomplete, keeping trigger, live plotting, pause, save, and next-run progression continuous.
+- Converts period-selection indices and counts to safe rendering types, including legacy bigint-shaped values, without changing selection gestures, endpoint rules, period verification, or precision.
+- Restores the visible screw-release settling motion by redrawing the demand-driven 3D instrument whenever piston, screw, hose, or platform state changes.
+- Removes all unsupported fixed rebound-velocity ranges. Normal peaks above 2 m/s remain intact while finite-value, physical-boundary, and numerical-divergence checks continue.
+- Silently stops failed rebound or settling animations, recomputes the stable position from current physical conditions, retains experiment data, and prevents a stuck rebounding state.
+- Normalizes non-resumable press, hold, free-fall, rebound, and short-animation state on restart while preserving Free plans, curves, drafts, selections, answers, fitting, calculations, and audit history.
+- Adds local processing/calculation render recovery that preserves the workbench chrome and data, plus an outer recovery frame that retains the real minimize, maximize/restore, and close controls.
+- Verifies 3–6-run and mixed system/custom-height workflows through selection, answer history, automatic calculation, fitting, results, instrument return, persistence, and explicit reset.
+- Ships matching installer, blockmap, and update metadata after 261 test files, TypeScript checks, 468-license-record verification, and a production audit with zero known vulnerabilities.
+
 ## 6.2.0
 
 - Completes piston-oscillation Free Mode with resumable 3–6-run plans, system and custom 10–80 mm targets, ordered progress, retry, deletion, whole-session reset, period verification, fitting, and automatic calculation handoff.
