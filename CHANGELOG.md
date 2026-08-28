@@ -1,5 +1,16 @@
 # Changelog
 
+## 6.2.0
+
+- Completes piston-oscillation Free Mode with resumable 3–6-run plans, system and custom 10–80 mm targets, ordered progress, retry, deletion, whole-session reset, period verification, fitting, and automatic calculation handoff.
+- Adds per-run 1–1000 Hz sampling and 96.0–130.0 kPa falling-threshold settings, dynamic monitoring ranges, immediate acquisition when the threshold is already met, and complete raw-sample, physical-snapshot, and answer-history records.
+- Unifies experiment-count and Free-progress controls across both heat-capacity methods, including keyboard, outside-click, popover placement, reset, color, and destructive-action behavior.
+- Makes left-side materials navigation mode-specific and restores the 3D instrument plus realtime-data layout after calculation closes.
+- Repairs Demo, Guide, and Free transitions, Free exit semantics, screw visual travel and pointer sensitivity, processing return, and non-blocking startup recovery.
+- Applies one loaded-gas equilibrium model across all three piston modes. Screw release produces a recordable one-way 0.2 s settling segment while nominal and exact heights remain distinct.
+- Migrates existing piston files into the new Free-session and thermodynamic structures without fabricating missing historical evidence, and prevents the rigid 0 mm lower stop from producing a false savable run.
+- Ships matching installer, blockmap, and update metadata after 259 test files, TypeScript checks, 468-license-record verification, and a production audit with zero known vulnerabilities.
+
 ## 6.1.1
 
 - Adds the complete piston-oscillation heat-capacity-ratio experiment with Demo, Guide, normal 3D operation, three 80/70/60 mm acquisition runs, period processing, and calculation.
