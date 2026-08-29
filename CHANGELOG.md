@@ -1,5 +1,17 @@
 # Changelog
 
+## 6.3.0
+
+- Adds a continuous piston thermal, pressure-sensor, press, and virtual-hand acquisition chain while retaining the existing Free plan, period processing, fitting, and calculation workflow.
+- Adds state-aligned power, hose, locking-screw, piston-vibration, and bottom-impact audio, with height-aware reset impacts and a silent threshold below 5 mm.
+- Unifies Guide checklist, primary-control, and interaction-gate state so correct actions after reminders cannot be rejected by stale step conditions.
+- Freezes Guide recording and visible time at 0.500 s before unlocking Pause, using the modeled equilibrium for each 80, 70, and 60 mm height and its distinct settling offset.
+- Migrates previously saved internal baseline-wait states to current steps so hidden diagnostic steps cannot reappear or block resumed Guide sessions.
+- Adds Enter confirmation to Guide acquisition parameters, matching Free Mode.
+- Adds crisp clockwise and counterclockwise screw arrows to Guide and Demo, tolerates correct-direction motion beyond completion, and graduates reverse-direction feedback from a gentle correction to protected boundary blocking.
+- Cuts Demo height adjustment, hose removal, and hose connection duration by 50% while preserving the existing motion cues.
+- Retains the application ID, installer identity, update repository, and user-data directory for an in-place update from 6.2.1.
+
 ## 6.2.1
 
 - Fixes the first Free acquisition render failure while the formal pressure curve is still incomplete, keeping trigger, live plotting, pause, save, and next-run progression continuous.
