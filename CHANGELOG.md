@@ -1,5 +1,16 @@
 # Changelog
 
+## 6.4.0
+
+- Adds per-experiment Piston-Oscillation Free-mode process review with an instrument-operation timeline, formal trace, selected-period evidence, and expandable score details.
+- Reuses the established heat-capacity event colors, milestone nodes, and tooltip behavior while recording only actions that actually occurred, including repeated presses, resets, impacts, hose and power actions, and two-hand release gaps.
+- Adds compact PDF report export for completed piston experiments, covering measurements, period processing, fitting, final calculation, process evidence, and scores without a separate theory chapter.
+- Adds a Free-mode parameter sidebar for ambient pressure and temperature, sampling, the falling trigger, and input visualization, plus confirmed access to reviewed advanced model parameters.
+- Freezes the complete parameter profile after the first formal curve is saved and continues to restore historical files from their captured model and parameter snapshots.
+- Scales the allowed falling-trigger range with ambient pressure while retaining the reviewed 96–130 kPa window at standard conditions and respecting sensor limits.
+- Keeps acquisition pause, save, live monitoring, and retry-after-missed-trigger behavior stable after process-review integration.
+- Retains the application ID, installer identity, public update repository, and user-data directory for an in-place update from 6.3.1.
+
 ## 6.3.1
 
 - Distinguishes a whole piston recording without a credible primary half-cycle from a usable trace with a narrow selection, reacquiring only the affected run while preserving evidence, settings, and completed runs.
