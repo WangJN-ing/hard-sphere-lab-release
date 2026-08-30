@@ -1,5 +1,17 @@
 # Changelog
 
+## 6.3.1
+
+- Distinguishes a whole piston recording without a credible primary half-cycle from a usable trace with a narrow selection, reacquiring only the affected run while preserving evidence, settings, and completed runs.
+- Changes Free-mode `t1 / t2 / T` and final `A / gamma / relative error` entry to editable batch validation without counting malformed drafts as formal errors; Guide Mode remains stepwise.
+- Adds seeded late-trace time folds and peak/trough shoulder attenuation so late-period selection can naturally degrade fitting without changing the early waveform, 1000 Hz grid, or underlying thermomechanical trajectory.
+- Uses one versioned `1.1 N·s/m` equivalent linear loss for new-experiment pressing and free oscillation while retaining captured `0.434 N·s/m` and other supported historical snapshots.
+- Adds a short-lived side-contact loss for unequal hand-release timing without lifting the platform after one hand releases, changing gas stiffness, or introducing permanent friction.
+- Presents acquisition with a 0.300 s delay and 0.55x pacing over the first 0.400 s of physical trace; this does not rescale samples, timestamps, periods, or calculations.
+- Restores live monitoring and audio after a press that misses the falling trigger, allowing an immediate second press in Free and Guide modes.
+- Keeps mode controls available on the primary processing view, locks them only inside the secondary calculation window, and fixes overflow of longer unified-validation actions.
+- Retains the application identity, update source, user-data directory, saved traces, and historical model semantics for an in-place update from 6.3.0.
+
 ## 6.3.0
 
 - Adds a continuous piston thermal, pressure-sensor, press, and virtual-hand acquisition chain while retaining the existing Free plan, period processing, fitting, and calculation workflow.
